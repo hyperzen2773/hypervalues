@@ -36,10 +36,28 @@
     },
     {
       "id": "e_market_welfare",
-      "text": "How extensive should public welfare and market regulation be?",
+      "text": "What fundamental philosophy should govern social security and market regulation?",
       "options": [
-        { "text": "A basic safety net and moderate regulation, preserving standard market incentives", "next": "welfare_capitalism" },
-        { "text": "Generous universal welfare and progressive taxation to guarantee social equity", "next": "social_capitalism" }
+        { "text": "Universalist social guarantees, stakeholder governance, and shared civic debt", "next": "e_social_universal" },
+        { "text": "Targeted poverty alleviation, rule-bound competition, and minimal market disruption", "next": "e_social_targeted" }
+      ]
+    },
+    {
+      "id": "e_social_universal",
+      "text": "How should broad social protection and market obligations be structured?",
+      "options": [
+        { "text": "Constitutional social guarantees, universal solidarity insurance, and anti-trust oversight", "next": "social_market" },
+        { "text": "Worker co-determination on corporate boards, vocational partnerships, and stakeholder banking", "next": "rhine_capitalism" },
+        { "text": "An organic civic debt, mutualist community funds, and extensive public services", "next": "solidarism" }
+      ]
+    },
+    {
+      "id": "e_social_targeted",
+      "text": "How should baseline market security and poverty alleviation be organized?",
+      "options": [
+        { "text": "Strict legal enforcement of competition and sound money, limiting aid to market-conforming relief", "next": "ordnungspolitik" },
+        { "text": "A minimal, means-tested safety net for the destitute while keeping labor markets fully flexible", "next": "residualism" },
+        { "text": "Replacing welfare bureaucracy and labor regulations with an unconditional cash floor", "next": "basic_income_capitalism" }
       ]
     },
     {
@@ -138,8 +156,12 @@
         { "text": "Direct administrative management of national wealth to maximize the public treasury", "next": "cameralism" }
       ]
     },
-    { "id": "welfare_capitalism" },
-    { "id": "social_capitalism" },
+    { "id": "social_market" },
+    { "id": "rhine_capitalism" },
+    { "id": "solidarism" },
+    { "id": "ordnungspolitik" },
+    { "id": "residualism" },
+    { "id": "basic_income_capitalism" },
     { "id": "laissez_faire" },
     { "id": "countereconomics" },
     { "id": "state_capitalism" },
