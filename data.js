@@ -258,7 +258,13 @@ const ideologyGroups = {
         "National Solidarity",
         "Cosmist Vanguardism",
         "Duginism",
-        "Fiumanism"
+        "Fiumanism",
+        "Pekerism",
+        "Ethnonationalist Kemalism",
+        "Eneasism",
+        "Social Nationalism",
+        "Ethnocacerismo",
+        "National Primitivism"
     ],
     "Reactionary": [
         "Volkism",
@@ -275,7 +281,9 @@ const ideologyGroups = {
         "Aristocratic Cameralism",
         "Developmental Theocracy",
         "Classical Eurasianism",
-        "Mladorossism"
+        "Mladorossism",
+        "National Social Capitalism",
+        "Right-State Liberalism"
     ],
     "Conservative": [
         "National Conservatism",
@@ -296,7 +304,11 @@ const ideologyGroups = {
         "Neo-Gaullism",
         "Bonapartist Gaullism",
         "Conservative Atlanticism",
-        "Neoconservative Atlanticism"
+        "Neoconservative Atlanticism",
+        "One-Nation Conservatism",
+        "Conservative Kemalism",
+        "Conservative Technoliberalism",
+        "Right-Social Authoritarianism"
     ],
     "Centrist": [
         "Radicalism",
@@ -306,7 +318,11 @@ const ideologyGroups = {
         "Rockefeller Republicanism",
         "Democratic Transhumanism",
         "Neo-Solidarism",
-        "Steppe Eurasianism"
+        "Steppe Eurasianism",
+        "Classical Kemalism",
+        "Centrist Kemalism",
+        "Catholic Social Teaching",
+        "Bleeding-Heart Authoritarianism"
     ],
     "Centre-Left": [
         "Nordic Model",
@@ -318,7 +334,15 @@ const ideologyGroups = {
         "Agrarian Social Democracy",
         "Progressive Corporatism",
         "Left-Gaullism",
-        "Labour Atlanticism"
+        "Labour Atlanticism",
+        "Green Social Democracy",
+        "Geo-Social Democracy",
+        "Christian Social Democracy",
+        "Police Labourism",
+        "Ecevitism",
+        "Left-Social Authoritarianism",
+        "Progressive Social Authoritarianism",
+        "Left-Wing Populism"
     ],
     "Liberal": [
         "Classical Liberalism",
@@ -332,7 +356,14 @@ const ideologyGroups = {
         "Whiggism",
         "Muscular Liberalism",
         "Liberal Atlanticism",
-        "Transatlantic Federalism"
+        "Transatlantic Federalism",
+        "New Deal Liberalism",
+        "Venizelism",
+        "Liberal Kemalism",
+        "Liberal Social Authoritarianism",
+        "Technoliberalism",
+        "American Model",
+        "Techno-Neoliberalism"
     ],
     "Socialist": [
         "Christian Socialism",
@@ -343,7 +374,12 @@ const ideologyGroups = {
         "Cybernetic Socialism",
         "Utopian Communitarianism",
         "Syndicalist Republicanism",
-        "Left-Eurasianism"
+        "Left-Eurasianism",
+        "Socialist Kemalism",
+        "Socialist Technoliberalism",
+        "Mugabeism",
+        "Old Left-Populism",
+        "Left-State Liberalism"
     ],
     "Marxist": [
         "Italian Left Communism",
@@ -363,7 +399,8 @@ const ideologyGroups = {
         "Castroism",
         "Guevarism",
         "Cyber-Communism",
-        "De Leonism"
+        "De Leonism",
+        "Marxism-Kemalism"
     ],
     "Left-Libertarian": [
         "Communalism",
@@ -377,7 +414,8 @@ const ideologyGroups = {
         "Cybersyn Socialism",
         "Fourierism",
         "Gandhian Socialism",
-        "Scythianism"
+        "Scythianism",
+        "Proutism"
     ],
     "Centre-Libertarian": [
         "Geolibertarianism",
@@ -387,7 +425,9 @@ const ideologyGroups = {
         "Minarcho-Distributism",
         "Pirate Politics",
         "Agorist Minarchism",
-        "Communal Distributism"
+        "Communal Distributism",
+        "Yangism",
+        "Libertarian Social Democracy"
     ],
     "Right-Libertarian": [
         "Neolibertarianism",
@@ -408,7 +448,8 @@ const ideologyGroups = {
         "Anarcho-Communism",
         "Solarpunk Anarchism",
         "Christian Anarchism",
-        "Insurrectionary Anarchism"
+        "Insurrectionary Anarchism",
+        "Catholic Workerism"
     ],
     "Centre-Anarchist": [
         "Mutualism",
@@ -489,6 +530,18 @@ const labelMapping = {
     "corporatism|perennial_traditionalism|autocracy|civilizationism|legal_moralism|Imperialism": "Duginism",
     "social_corporatism|totalitarianism|romantic_nationalism|Non_Interventionism": "Fiumanism",
     "social_corporatism|autocracy|romantic_nationalism|Non_Interventionism": "Fiumanism",
+    "corporatism|Progressive_Taxation|progressivism|totalitarianism|ethnic_nationalism|Realpolitik|industrialism|regimentalism|hypercentralism": "Pekerism",
+    "dirigisme|Progressive_Taxation|progressivism|partocracy|cultural_nationalism|Realpolitik|industrialism|totalism|hypercentralism": "Pekerism",
+    "dirigisme|Progressive_Taxation|progressive_conservatism|representative_democracy|ethnic_nationalism|Realpolitik|industrialism|securitism|centralism": "Ethnonationalist Kemalism",
+    "state_capitalism|Progressive_Taxation|conservatism|partocracy|ethnic_nationalism|Isolationism|industrialism|disciplinarianism|centralism": "Ethnonationalist Kemalism",
+    "dirigisme|Progressive_Taxation|traditionalist_conservatism|technocracy|cultural_nationalism|armed_neutrality|industrialism|disciplinarianism|centralism": "Eneasism",
+    "state_capitalism|Progressive_Taxation|conservatism|technocracy|cultural_nationalism|Realpolitik|industrialism|legal_moralism|centralism": "Eneasism",
+    "rhine_capitalism|Progressive_Taxation|traditionalist_conservatism|representative_democracy|cultural_nationalism|Realpolitik|industrialism|legal_moralism|centralism": "Social Nationalism",
+    "social_market|Progressive_Taxation|religious_traditionalism|partocracy|religious_nationalism|Realpolitik|industrialism|legal_moralism|centralism": "Social Nationalism",
+    "state_socialism|collective_distribution|reactionaryism|stratocracy|racial_nationalism|Imperialism|industrialism|regimentalism|centralism": "Ethnocacerismo",
+    "agrarian_socialism|collective_distribution|traditionalist_conservatism|stratocracy|ethnic_nationalism|Realpolitik|instrumentalism|regimentalism|centralism": "Ethnocacerismo",
+    "corporatism|collective_distribution|reactionaryism|totalitarianism|ethnic_nationalism|Isolationism|primitivism|regimentalism|centralism": "National Primitivism",
+    "distributism|collective_distribution|perennial_traditionalism|autocracy|Tribalism|Isolationism|primitivism|disciplinarianism|regionalism": "National Primitivism",
 
     /* 2. Reactionary */
     "agrarian_socialism|reactionaryism|autocracy|romantic_nationalism|neoluddism|legal_moralism": "Volkism",
@@ -517,6 +570,10 @@ const labelMapping = {
     "dirigisme|traditionalist_conservatism|meritocracy|civilizationism|disciplinarianism|Realpolitik": "Classical Eurasianism",
     "state_socialism|traditionalist_conservatism|absolute|civilizationism|regimentalism": "Mladorossism",
     "state_socialism|religious_traditionalism|absolute|civilizationism|regimentalism": "Mladorossism",
+    "social_market|Progressive_Taxation|reactionaryism|autocracy|ethnic_nationalism|Isolationism|industrialism|legal_moralism|centralism": "National Social Capitalism",
+    "rhine_capitalism|Progressive_Taxation|traditionalist_conservatism|representative_democracy|ethnic_nationalism|Realpolitik|industrialism|disciplinarianism|centralism": "National Social Capitalism",
+    "laissez_faire|flat_taxation|progressivism|totalitarianism|racial_nationalism|Imperialism|transhumanism|disciplinarianism|hypercentralism": "Right-State Liberalism",
+    "laissez_faire|flat_taxation|civil_liberalism|autocracy|civilizationism|Imperialism|industrialism|regimentalism|centralism": "Right-State Liberalism",
 
     /* 3. Conservative */
     "residualism|Progressive_Taxation|conservatism|representative_democracy|cultural_nationalism|Realpolitik|legal_moralism|centralism": "National Conservatism",
@@ -555,6 +612,14 @@ const labelMapping = {
     "laissez_faire|liberal_conservatism|representative_democracy|civilizationism|Realpolitik": "Conservative Atlanticism",
     "residualism|liberal_conservatism|representative_democracy|civilizationism|Interventionism|securitism": "Neoconservative Atlanticism",
     "residualism|conservatism|representative_democracy|civilizationism|Interventionism|securitism": "Neoconservative Atlanticism",
+    "keynesianism|Progressive_Taxation|progressive_conservatism|constitutional|cultural_nationalism|Realpolitik|instrumentalism|civic_paternalism|regionalism": "One-Nation Conservatism",
+    "social_market|Progressive_Taxation|liberal_conservatism|constitutional|civic_nationalism|Realpolitik|industrialism|civic_paternalism|centralism": "One-Nation Conservatism",
+    "social_market|flat_taxation|liberal_conservatism|representative_democracy|cultural_nationalism|Interventionism|industrialism|civic_paternalism|centralism": "Conservative Kemalism",
+    "ordnungspolitik|Progressive_Taxation|conservatism|representative_democracy|cultural_nationalism|Realpolitik|instrumentalism|legal_moralism|centralism": "Conservative Kemalism",
+    "social_market|flat_taxation|liberal_conservatism|representative_democracy|civic_nationalism|Globalism|extropianism|civil_libertarianism|federalism": "Conservative Technoliberalism",
+    "basic_income_capitalism|flat_taxation|conservatism|representative_democracy|civilizationism|Globalism|ecomodernism|civil_libertarianism|federalism": "Conservative Technoliberalism",
+    "third_way|flat_taxation|liberal_conservatism|autocracy|civic_nationalism|Realpolitik|industrialism|securitism|centralism": "Right-Social Authoritarianism",
+    "residualism|Progressive_Taxation|conservatism|stratocracy|civic_nationalism|Realpolitik|instrumentalism|securitism|centralism": "Right-Social Authoritarianism",
 
     /* 4. Centrist */
     "solidarism|civil_liberalism|representative_democracy|civic_nationalism|Internationalism": "Radicalism",
@@ -575,15 +640,22 @@ const labelMapping = {
     "solidarism|social_progressivism|representative_democracy|civic_nationalism|Internationalism|environmentalism": "Neo-Solidarism",
     "dirigisme|progressive_conservatism|technocracy|civilizationism|Realpolitik|civic_paternalism": "Steppe Eurasianism",
     "state_capitalism|progressive_conservatism|technocracy|civilizationism|Realpolitik|civic_paternalism": "Steppe Eurasianism",
-
+    "dirigisme|Progressive_Taxation|progressivism|partocracy|civic_nationalism|Non_Interventionism|industrialism|civic_paternalism|centralism": "Classical Kemalism",
+    "dirigisme|Progressive_Taxation|progressivism|representative_democracy|civic_nationalism|armed_neutrality|industrialism|civic_paternalism|centralism": "Classical Kemalism",
+    "dirigisme|Progressive_Taxation|progressive_conservatism|representative_democracy|civic_nationalism|Realpolitik|industrialism|civic_paternalism|centralism": "Centrist Kemalism",
+    "social_market|Progressive_Taxation|progressive_conservatism|representative_democracy|cultural_nationalism|Realpolitik|instrumentalism|civic_paternalism|centralism": "Centrist Kemalism",
+    "solidarism|Progressive_Taxation|progressive_conservatism|representative_democracy|communitarianism|Internationalism|conservationism|civic_paternalism|regionalism": "Catholic Social Teaching",
+    "social_corporatism|Progressive_Taxation|conservatism|representative_democracy|communitarianism|Internationalism|environmentalism|civic_paternalism|municipalism": "Catholic Social Teaching",
+    "ordnungspolitik|flat_taxation|progressivism|autocracy|Cosmopolitanism|Globalism|instrumentalism|permissivism|centralism": "Bleeding-Heart Authoritarianism",
+    "laissez_faire|flat_taxation|social_progressivism|autocracy|civic_nationalism|Globalism|instrumentalism|permissivism|centralism": "Bleeding-Heart Authoritarianism",
+    
     /* 5. Centre-Left */
     "neo_corporatism|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Internationalism|civic_paternalism|centralism": "Nordic Model",
     "neo_corporatism|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Internationalism|civic_paternalism|municipalism": "Nordic Model",
     "neo_corporatism|Progressive_Taxation|civil_liberalism|representative_democracy|civic_nationalism|Internationalism|civic_paternalism|centralism": "Nordic Model",
-    "social_market|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Internationalism": "Social Democracy",
-    "social_market|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Globalism": "Social Democracy",
-    "social_market|Progressive_Taxation|progressivism|representative_democracy|civic_nationalism|Internationalism": "Social Democracy",
-    "social_market|Progressive_Taxation|progressivism|representative_democracy|civic_nationalism|Globalism": "Social Democracy",
+    "social_market|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Internationalism|industrialism|civic_paternalism|federalism": "Social Democracy",
+    "social_market|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Internationalism|instrumentalism|civic_paternalism|centralism": "Social Democracy",
+    "rhine_capitalism|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Internationalism|industrialism|civic_paternalism|federalism": "Social Democracy",
     "keynesianism|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Internationalism": "Social Democracy",
     "social_market|Progressive_Taxation|conservatism|representative_democracy|communitarianism|Realpolitik": "Conservative Social Democracy",
     "solidarism|Progressive_Taxation|conservatism|representative_democracy|cultural_nationalism|Realpolitik": "Conservative Social Democracy",
@@ -601,6 +673,24 @@ const labelMapping = {
     "solidarism|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|armed_neutrality": "Left-Gaullism",
     "keynesianism|Progressive_Taxation|social_progressivism|representative_democracy|civilizationism|Internationalism": "Labour Atlanticism",
     "keynesianism|Progressive_Taxation|social_progressivism|representative_democracy|civilizationism|Interventionism": "Labour Atlanticism",
+    "social_market|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Internationalism|environmentalism|civic_paternalism|federalism": "Green Social Democracy",
+    "social_market|Progressive_Taxation|progressivism|representative_democracy|Cosmopolitanism|Internationalism|environmentalism|civic_paternalism|regionalism": "Green Social Democracy",
+    "keynesianism|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Internationalism|environmentalism|civic_paternalism|centralism": "Green Social Democracy",
+    "social_corporatism|lvt|social_progressivism|representative_democracy|civic_nationalism|Internationalism|environmentalism|civic_paternalism|federalism": "Geo-Social Democracy",
+    "keynesianism|lvt|social_progressivism|representative_democracy|civic_nationalism|Internationalism|instrumentalism|civic_paternalism|centralism": "Geo-Social Democracy",
+    "solidarism|Progressive_Taxation|progressive_conservatism|representative_democracy|communitarianism|Internationalism|environmentalism|civic_paternalism|federalism": "Christian Social Democracy",
+    "social_market|Progressive_Taxation|progressive_conservatism|representative_democracy|civic_nationalism|Internationalism|instrumentalism|civic_paternalism|regionalism": "Christian Social Democracy",
+    "social_corporatism|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Realpolitik|industrialism|securitism|centralism": "Police Labourism",
+    "keynesianism|Progressive_Taxation|progressive_conservatism|representative_democracy|civic_nationalism|Interventionism|instrumentalism|securitism|centralism": "Police Labourism",
+    "social_market|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Realpolitik|industrialism|civic_paternalism|centralism": "Ecevitism",
+    "keynesianism|Progressive_Taxation|social_progressivism|representative_democracy|cultural_nationalism|Realpolitik|industrialism|civic_paternalism|centralism": "Ecevitism",
+    "social_corporatism|Progressive_Taxation|progressive_conservatism|autocracy|pan_nationalism|Realpolitik|industrialism|disciplinarianism|centralism": "Left-Social Authoritarianism",
+    "guild_socialism|Progressive_Taxation|alternative_modernism|autocracy|civic_nationalism|Non_Interventionism|industrialism|civic_paternalism|centralism": "Left-Social Authoritarianism",
+    "dirigisme|Progressive_Taxation|social_progressivism|autocracy|pan_nationalism|Realpolitik|industrialism|disciplinarianism|centralism": "Left-Social Authoritarianism",
+    "state_capitalism|Progressive_Taxation|progressivism|autocracy|civic_nationalism|Realpolitik|industrialism|disciplinarianism|centralism": "Progressive Social Authoritarianism",
+    "social_corporatism|Progressive_Taxation|social_progressivism|partocracy|civic_nationalism|Realpolitik|industrialism|regimentalism|centralism": "Progressive Social Authoritarianism",
+    "keynesianism|Confiscatory_Taxation|social_progressivism|direct_democracy|civic_nationalism|alter_globalism|environmentalism|civil_libertarianism|federalism": "Left-Wing Populism",
+    "market_socialism|Confiscatory_Taxation|social_progressivism|representative_democracy|civic_nationalism|alter_globalism|instrumentalism|civil_libertarianism|regionalism": "Left-Wing Populism",
 
    /* 6. Liberal */
     "laissez_faire|flat_taxation|civil_liberalism|minarchism|civic_nationalism|Non_Interventionism|civil_libertarianism|federalism": "Classical Liberalism",
@@ -609,9 +699,9 @@ const labelMapping = {
     "residualism|civil_liberalism|representative_democracy|civic_nationalism|Globalism": "Neoliberalism",
     "laissez_faire|flat_taxation|civil_liberalism|representative_democracy|civic_nationalism|Globalism": "Neoliberalism",
     "laissez_faire|flat_taxation|conservative_liberalism|representative_democracy|cultural_nationalism|Realpolitik": "National Liberalism",
-    "social_market|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Globalism": "Social Liberalism",
-    "social_market|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Internationalism": "Social Liberalism",
-    "keynesianism|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Internationalism": "Social Liberalism",
+    "social_market|Progressive_Taxation|civil_liberalism|representative_democracy|civic_nationalism|Globalism|instrumentalism|civil_libertarianism|federalism": "Social Liberalism",
+    "social_market|Progressive_Taxation|civil_liberalism|representative_democracy|civic_nationalism|Internationalism|instrumentalism|civil_libertarianism|centralism": "Social Liberalism",
+    "third_way|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Globalism|instrumentalism|civil_libertarianism|federalism": "Social Liberalism",
     "ordnungspolitik|conservative_liberalism|representative_democracy|civic_nationalism|Globalism": "Ordoliberalism",
     "ordnungspolitik|liberal_conservatism|representative_democracy|civic_nationalism|Internationalism": "Ordoliberalism",
     "basic_income_capitalism|social_progressivism|representative_democracy|Cosmopolitanism|Globalism|civil_libertarianism": "Bleeding-Heart Liberalism",
@@ -627,6 +717,20 @@ const labelMapping = {
     "ordnungspolitik|civil_liberalism|representative_democracy|civilizationism|Globalism|civil_libertarianism": "Liberal Atlanticism",
     "ordnungspolitik|civil_liberalism|representative_democracy|civilizationism|Globalism|federalism": "Transatlantic Federalism",
     "social_market|civil_liberalism|representative_democracy|civilizationism|Globalism|federalism": "Transatlantic Federalism",
+    "keynesianism|Progressive_Taxation|civil_liberalism|representative_democracy|civic_nationalism|Internationalism|industrialism|civic_paternalism|federalism": "New Deal Liberalism",
+    "keynesianism|Progressive_Taxation|progressive_conservatism|representative_democracy|civic_nationalism|Interventionism|industrialism|civic_paternalism|federalism": "New Deal Liberalism",
+    "solidarism|Progressive_Taxation|conservative_liberalism|representative_democracy|pan_nationalism|Imperialism|industrialism|civic_paternalism|centralism": "Venizelism",
+    "social_market|Progressive_Taxation|liberal_conservatism|representative_democracy|cultural_nationalism|Imperialism|instrumentalism|civic_paternalism|centralism": "Venizelism",
+    "laissez_faire|flat_taxation|civil_liberalism|representative_democracy|civic_nationalism|Internationalism|industrialism|civil_libertarianism|centralism": "Liberal Kemalism",
+    "ordnungspolitik|Progressive_Taxation|civil_liberalism|representative_democracy|civic_nationalism|Globalism|instrumentalism|civil_libertarianism|centralism": "Liberal Kemalism",
+    "third_way|Progressive_Taxation|social_progressivism|partocracy|civic_nationalism|Globalism|instrumentalism|securitism|centralism": "Liberal Social Authoritarianism",
+    "keynesianism|Progressive_Taxation|civil_liberalism|autocracy|civic_nationalism|Interventionism|industrialism|disciplinarianism|centralism": "Liberal Social Authoritarianism",
+    "social_market|Progressive_Taxation|civil_liberalism|representative_democracy|civic_nationalism|Globalism|ecomodernism|civil_libertarianism|federalism": "Technoliberalism",
+    "ordnungspolitik|Progressive_Taxation|progressivism|representative_democracy|Cosmopolitanism|Globalism|environmentalism|civil_libertarianism|federalism": "Technoliberalism",
+    "laissez_faire|Progressive_Taxation|civil_liberalism|representative_democracy|civic_nationalism|Interventionism|industrialism|civil_libertarianism|federalism": "American Model",
+    "residualism|Progressive_Taxation|conservative_liberalism|representative_democracy|civic_nationalism|Interventionism|instrumentalism|civil_libertarianism|federalism": "American Model",
+    "residualism|flat_taxation|civil_liberalism|technocracy|Cosmopolitanism|Globalism|technocapitalism|securitism|centralism": "Techno-Neoliberalism",
+    "laissez_faire|flat_taxation|progressivism|technocracy|Cosmopolitanism|Interventionism|ecomodernism|civic_paternalism|centralism": "Techno-Neoliberalism",
 
     /* 7. Socialist */
     "utopian_socialism|social_progressivism|representative_democracy|communitarianism|Non_Interventionism": "Christian Socialism",
@@ -653,6 +757,16 @@ const labelMapping = {
     "utopian_socialism|progressivism|direct_democracy|communitarianism": "Utopian Communitarianism",
     "syndicalism|social_progressivism|representative_democracy|Internationalism": "Syndicalist Republicanism",
     "state_socialism|collective_distribution|alternative_modernism|partocracy|civilizationism|alter_globalism|regimentalism": "Left-Eurasianism",
+    "state_socialism|Confiscatory_Taxation|progressivism|partocracy|civic_nationalism|Non_Interventionism|industrialism|disciplinarianism|centralism": "Socialist Kemalism",
+    "state_socialism|Progressive_Taxation|progressivism|technocracy|cultural_nationalism|armed_neutrality|industrialism|civic_paternalism|centralism": "Socialist Kemalism",
+    "market_socialism|Progressive_Taxation|progressivism|representative_democracy|Cosmopolitanism|alter_globalism|ecomodernism|civil_libertarianism|federalism": "Socialist Technoliberalism",
+    "market_socialism|Progressive_Taxation|civil_liberalism|direct_democracy|civic_nationalism|alter_globalism|prometheanism|civil_libertarianism|federalism": "Socialist Technoliberalism",
+    "agrarian_socialism|Confiscatory_Taxation|conservatism|autocracy|pan_nationalism|Non_Interventionism|instrumentalism|disciplinarianism|centralism": "Mugabeism",
+    "state_socialism|collective_distribution|traditionalist_conservatism|partocracy|pan_nationalism|alter_globalism|instrumentalism|legal_moralism|centralism": "Mugabeism",
+    "state_socialism|Confiscatory_Taxation|conservatism|representative_democracy|cultural_nationalism|Non_Interventionism|industrialism|legal_moralism|centralism": "Old Left-Populism",
+    "agrarian_socialism|Confiscatory_Taxation|traditionalist_conservatism|representative_democracy|cultural_nationalism|alter_globalism|instrumentalism|legal_moralism|regionalism": "Old Left-Populism",
+    "state_capitalism|Progressive_Taxation|postmodernism|totalitarianism|Cosmopolitanism|Globalism|instrumentalism|totalism|hypercentralism": "Left-State Liberalism",
+    "dirigisme|Progressive_Taxation|progressivism|totalitarianism|Cosmopolitanism|Globalism|instrumentalism|disciplinarianism|centralism": "Left-State Liberalism",
 
     /* 8. Marxist */
     "communization|collective_distribution|partocracy|Cosmopolitanism|Internationalism": "Italian Left Communism",
@@ -686,6 +800,8 @@ const labelMapping = {
     "agrarian_socialism|collective_distribution|social_progressivism|autocracy|Interventionism": "Guevarism",
     "state_socialism|collective_distribution|social_progressivism|technocracy|Internationalism|prometheanism": "Cyber-Communism",
     "syndicalism|collective_distribution|social_progressivism|representative_democracy|Internationalism|industrialism": "De Leonism",
+    "state_socialism|collective_distribution|progressivism|partocracy|civic_nationalism|alter_globalism|industrialism|regimentalism|centralism": "Marxism-Kemalism",
+    "state_socialism|collective_distribution|social_progressivism|autocracy|cultural_nationalism|Non_Interventionism|industrialism|regimentalism|centralism": "Marxism-Kemalism",
 
     /* 9. Left-Libertarian */
     "free_socialism|collective_distribution|social_progressivism|direct_democracy|communitarianism|alter_globalism|environmentalism|municipalism": "Communalism",
@@ -713,6 +829,8 @@ const labelMapping = {
     "agrarian_socialism|perennial_traditionalism|direct_democracy|communitarianism|Non_Interventionism|neoluddism": "Gandhian Socialism",
     "agrarian_socialism|alternative_modernism|direct_democracy|civilizationism|permissivism": "Scythianism",
     "agrarian_socialism|alternative_modernism|anarchism|civilizationism|permissivism": "Scythianism",
+    "free_socialism|collective_distribution|progressivism|direct_democracy|Cosmopolitanism|Globalism|conservationism|civil_libertarianism|confederalism": "Proutism",
+    "market_socialism|collective_distribution|social_progressivism|direct_democracy|Cosmopolitanism|alter_globalism|conservationism|civil_libertarianism|municipalism": "Proutism",
 
     /* 10. Centre-Libertarian */
     "laissez_faire|lvt|civil_liberalism|minarchism|Non_Interventionism|civil_libertarianism": "Geolibertarianism",
@@ -733,6 +851,10 @@ const labelMapping = {
     "countereconomics|civil_liberalism|minarchism|Non_Interventionism|civil_libertarianism": "Agorist Minarchism",
     "social_distributism|social_progressivism|direct_democracy|communitarianism|alter_globalism|municipalism": "Communal Distributism",
     "social_distributism|social_progressivism|direct_democracy|communitarianism|alter_globalism|confederalism": "Communal Distributism",
+    "basic_income_capitalism|Progressive_Taxation|progressivism|representative_democracy|civic_nationalism|Internationalism|ecomodernism|civil_libertarianism|federalism": "Yangism",
+    "basic_income_capitalism|Progressive_Taxation|social_progressivism|representative_democracy|civic_nationalism|Interventionism|ecomodernism|civil_libertarianism|federalism": "Yangism",
+    "social_market|lvt|social_progressivism|minarchism|Cosmopolitanism|Non_Interventionism|environmentalism|civil_libertarianism|federalism": "Libertarian Social Democracy",
+    "basic_income_capitalism|Progressive_Taxation|social_progressivism|minarchism|civic_nationalism|Non_Interventionism|instrumentalism|civil_libertarianism|federalism": "Libertarian Social Democracy",
 
     /* 11. Right-Libertarian */
     "laissez_faire|flat_taxation|civil_liberalism|minarchism|civic_nationalism|Interventionism|securitism|federalism": "Neolibertarianism",
@@ -780,6 +902,8 @@ const labelMapping = {
     "distributism|Voluntaryism|religious_traditionalism|anarchism|communitarianism|Non_Interventionism|neoluddism|civil_libertarianism|municipalism": "Christian Anarchism",
     "communization|collective_distribution|postmodernism|anarchism|egoism|Internationalism|neoluddism|permissivism": "Insurrectionary Anarchism",
     "free_socialism|collective_distribution|social_progressivism|anarchism|egoism|Internationalism|permissivism": "Insurrectionary Anarchism",
+    "free_socialism|collective_distribution|religious_traditionalism|anarchism|communitarianism|Non_Interventionism|neoluddism|civil_libertarianism|municipalism": "Catholic Workerism",
+    "social_distributism|Voluntaryism|religious_traditionalism|anarchism|communitarianism|Non_Interventionism|conservationism|civil_libertarianism|municipalism": "Catholic Workerism",
 
     /* 13. Centre-Anarchist */
     "mutualism|civil_liberalism|anarchism|communitarianism|alter_globalism|civil_libertarianism|confederalism": "Mutualism",
@@ -905,6 +1029,12 @@ const labelColors = {
     "Cosmist Vanguardism": "#36214f",
     "Duginism": "#3d1833",
     "Fiumanism": "#542238",
+    "Pekerism": "#4f1d1d",
+    "Ethnonationalist Kemalism": "#5c2020",
+    "Eneasism": "#1e4638",
+    "Social Nationalism": "#592834",
+    "Ethnocacerismo": "#6b1d1d",
+    "National Primitivism": "#2b3d1f",
 
     /* 2. Reactionary */
     "Volkism": "#3b1515ff",
@@ -922,6 +1052,8 @@ const labelColors = {
     "Developmental Theocracy": "#614e2d",
     "Classical Eurasianism": "#263e36",
     "Mladorossism": "#1c2e47",
+    "National Social Capitalism": "#635324",
+    "Right-State Liberalism": "#3b5675",
 
     /* 3. Conservative */
     "National Conservatism": "#002366",
@@ -943,6 +1075,10 @@ const labelColors = {
     "Bonapartist Gaullism": "#193561",
     "Conservative Atlanticism": "#1b3f73",
     "Neoconservative Atlanticism": "#1f2d5a",
+    "One-Nation Conservatism": "#1a4380",
+    "Conservative Kemalism": "#2a528a",
+    "Conservative Technoliberalism": "#2d5f7a",
+    "Right-Social Authoritarianism": "#3a496b",
 
     /* 4. Centrist */
     "Radicalism": "#a15c8dff",
@@ -953,6 +1089,10 @@ const labelColors = {
     "Democratic Transhumanism": "#277a94",
     "Neo-Solidarism": "#6e5d31",
     "Steppe Eurasianism": "#2d6b63",
+    "Classical Kemalism": "#b82929",
+    "Centrist Kemalism": "#943a3a",
+    "Catholic Social Teaching": "#5c3d75",
+    "Bleeding-Heart Authoritarianism": "#6e5485",
 
     /* 5. Centre-Left */
     "Nordic Model": "#fa6161ff",
@@ -965,6 +1105,14 @@ const labelColors = {
     "Progressive Corporatism": "#c74242ff",
     "Left-Gaullism": "#214c78",
     "Labour Atlanticism": "#a13b48",
+    "Green Social Democracy": "#2e8555",
+    "Geo-Social Democracy": "#3b9468",
+    "Christian Social Democracy": "#a8384b",
+    "Police Labourism": "#8c2735",
+    "Ecevitism": "#d92b2b",
+    "Left-Social Authoritarianism": "#8f2424",
+    "Progressive Social Authoritarianism": "#9e2a45",
+    "Left-Wing Populism": "#db3246",
 
     /* 6. Liberal */
     "Classical Liberalism": "#71beebff",
@@ -979,6 +1127,13 @@ const labelColors = {
     "Muscular Liberalism": "#2b6cb0",
     "Liberal Atlanticism": "#3a75a4",
     "Transatlantic Federalism": "#4688b8",
+    "New Deal Liberalism": "#3474b4",
+    "Venizelism": "#2e6da4",
+    "Liberal Kemalism": "#4b83bd",
+    "Liberal Social Authoritarianism": "#385e82",
+    "Technoliberalism": "#3399b8",
+    "American Model": "#244c8a",
+    "Techno-Neoliberalism": "#33738f",
 
     /* 7. Socialist */
     "Christian Socialism": "#8B0000",
@@ -990,6 +1145,11 @@ const labelColors = {
     "Utopian Communitarianism": "#963629ff",
     "Syndicalist Republicanism": "#a82020ff",
     "Left-Eurasianism": "#782222",
+    "Socialist Kemalism": "#991f1f",
+    "Socialist Technoliberalism": "#bd334b",
+    "Mugabeism": "#2f5926",
+    "Old Left-Populism": "#822424",
+    "Left-State Liberalism": "#702963",
 
     /* 8. Marxist */
     "Italian Left Communism": "#B22222",
@@ -1010,6 +1170,7 @@ const labelColors = {
     "Guevarism": "#c71e1eff",
     "Cyber-Communism": "#872235ff",
     "De Leonism": "#a32121ff",
+    "Marxism-Kemalism": "#b31919",
 
     /* 9. Left-Libertarian */
     "Communalism": "#bb5030ff",
@@ -1024,6 +1185,7 @@ const labelColors = {
     "Fourierism": "#a64966",
     "Gandhian Socialism": "#94552b",
     "Scythianism": "#8c4e20",
+    "Proutism": "#c45a25",
 
     /* 10. Centre-Libertarian */
     "Geolibertarianism": "#709e3cff",
@@ -1034,6 +1196,8 @@ const labelColors = {
     "Pirate Politics": "#5d43a6ff",
     "Agorist Minarchism": "#73802eff",
     "Communal Distributism": "#a65d28ff",
+    "Yangism": "#4a77b5",
+    "Libertarian Social Democracy": "#e07a38",
 
     /* 11. Right-Libertarian */
     "Neolibertarianism": "#B8860B",
@@ -1055,6 +1219,7 @@ const labelColors = {
     "Solarpunk Anarchism": "#428a47ff",
     "Christian Anarchism": "#802222ff",
     "Insurrectionary Anarchism": "#851212ff",
+    "Catholic Workerism": "#7a2020",
 
     /* 13. Centre-Anarchist */
     "Mutualism": "#db4804ff",
@@ -1127,6 +1292,12 @@ const descriptions = {
     "Cosmist Vanguardism": "An authoritarian civilizational framework inspired by Russian Cosmism. It uses state capitalism and totalitarian mobilization to direct national science, industrial power, and social unity toward cosmic expansion, planetary geoengineering, and the conquest of human physical limits.",
     "Duginism": "The geopolitical philosophy founded by Aleksandr Dugin (the Fourth Political Theory). It frames world history as an existential struggle between Atlanticist maritime liberalism and Eurasian continental tradition, advocating for a sacred, multipolar imperial federation of distinct civilizations to dismantle Western unipolar hegemony.",
     "Fiumanism": "A proto-fascist and modernist ideology that developed during Gabriele D'Annunzio's Regency of Carnaro. It emphasized aestheticism, political experimentation, corporatist producer guilds, and romantic nationalism with strong opposition to foreign intervention.",
+    "Pekerism": "An authoritarian totalitarian variant of Kemalism championed by Recep Peker in the 1930s and 1940s. Influenced by European fascism, it advocated permanent one-party rule, aggressive Turkification policies, and strict anti-religious closures.",
+    "Ethnonationalist Kemalism": "An ethnocentric interpretation of Kemalism theorized by Mehmet Saffet Engin and represented in modern Turkish politics by Ümit Özdağ's Victory Party (Zafer Partisi). Diverging from Atatürk's civic nationalism, it emphasizes Turkish ethnic superiority and strict anti-immigration policies.",
+    "Eneasism": "A statist, nationalist, economically interventionist, and culturally far-right technocratic ideology formulated by Brazilian politician Enéas Carneiro.",
+    "Social Nationalism": "An ideology advocating a constitutional nationalist state with a flexible social economy (ranging from social democracy to Rhine capitalism) while rejecting both laissez-faire materialism and communism, grounded in traditionalist virtues of Nation, God, and Love.",
+    "Ethnocacerismo": "A Peruvian authoritarian, ultranationalist, and socialist ideology founded by Isaac Humala. Rooted in radical Indigenism and militarism, it advocates for an authoritarian socialist state led by and for the indigenous Incan majority.",
+    "National Primitivism": "An authoritarian, culturally far-right, and anti-technological ideology holding that industrial and agricultural technology has degenerated national culture, seeking a state-enforced return to pre-industrial or hunter-gatherer life.",
 
     /* 2. Reactionary */
     "Volkism": "Volkism is a German ethnic-nationalist movement emphasizing \"blood and soil.\" It idealizes a mystical, organic union of a racially pure people (the Volk) rooted in their ancestral land and traditional folklore.",
@@ -1144,6 +1315,8 @@ const descriptions = {
     "Developmental Theocracy": "A traditionalist governance model that pairs clerical and sacred authority with modern economic development. It utilizes a flat tax, public-private capital coordination, and heavy industrial output under the sovereign moral guidance of religious institutions.",
     "Classical Eurasianism": "A 1920s Russian émigré movement founded by Nikolai Trubetzkoy and Pyotr Savitsky. It asserts that Eurasia is an autonomous spiritual and geographic continent distinct from both Europe and Asia, advocating for an 'Ideocracy'—governance by a dedicated, non-partisan meritocratic elite bound by civilizational duty.",
     "Mladorossism": "A syncretic 1930s Russian monarcho-socialist movement founded by Alexander Kazembek under the slogan 'The Tsar and the Soviets'. It seeks to reconcile hereditary imperial monarchy as the spiritual head of state with the Soviet council system, public industrial planning, and social guarantees for the working class.",
+    "National Social Capitalism": "A nationalist and welfarist fusion of National Capitalism and Social Capitalism. It pairs a center-left to right-wing social market economy with right-wing cultural nationalism and welfare chauvinism.",
+    "Right-State Liberalism": "An authoritarian, economically far-right, and ultranationalist analog to State Liberalism. It posits that progressive values—such as secularism, feminism, civil liberties, and eugenics—are exclusively Western civilizational traits, combining them with racial nationalism and imperialism.",
 
     /* 3. Conservative */
     "National Conservatism": "A movement emphasizing national sovereignty, cultural identity, and traditional values. It prioritizes the interests of the nation-state over international cooperation, often advocating for restricted immigration and protectionist economic measures.",
@@ -1165,6 +1338,10 @@ const descriptions = {
     "Bonapartist Gaullism": "The providential and plebiscitary tradition of Gaullism inspired by the founding phase of the Fifth Republic (1958–1962). Skeptical of parliamentary party regimes, it unites the nation under strong, centralized executive authority legitimized through direct citizen referendums, combined with state-led strategic industry, nuclear independence, and national discipline.",
     "Conservative Atlanticism": "A conservative geopolitical doctrine rooted in the Cold War alliance of Ronald Reagan and Margaret Thatcher. It views the Euro-Atlantic world as an organic cultural civilization anchored in classical Greco-Roman heritage, Judeo-Christian ethics, rule of law, and free enterprise, defending Western civilizational continuity through collective defense and realist statecraft.",
     "Neoconservative Atlanticism": "A hawkish foreign policy framework prominent during the post-Cold War and Bush–Blair eras. It envisions the Atlantic democratic alliance as a moral and military vanguard with a strategic duty to project power abroad, counter authoritarian regimes, enforce democratic standards globally, and maintain robust domestic intelligence and surveillance integration.",
+    "One-Nation Conservatism": "Also known as Tory Democracy, an economically center-left and culturally center-right British conservative tradition founded by Benjamin Disraeli. Viewing society as organic, it combines loyalty to established institutions with Keynesian welfare and working-class social programs.",
+    "Conservative Kemalism": "A center-right interpretation of Kemalism originating with Celâl Bayar and Adnan Menderes's Democrat Party in 1950 and represented today by the İYİ Party. It combines Kemalist republicanism with national conservatism, market economics, and strong Euro-Atlantic ties.",
+    "Conservative Technoliberalism": "A variant of technoliberalism that combines rapid technological acceleration, ecomodernism, and social safety nets with the preservation of traditional cultural values.",
+    "Right-Social Authoritarianism": "Also known as Capitalist Social Authoritarianism, a Machiavellian variant of social authoritarianism aligned with right-social democracy. Leaders balance strategic welfare benefits or austerity cuts with heavy reliance on police forces to pacify opposition (exemplified by figures like Giovanni Giolitti, Nursultan Nazarbayev, and Marcos Pérez Jiménez).",
 
     /* 4. Centrist */
     "Radicalism": "An early liberal movement advocating for fundamental systemic reform. It champions universal suffrage, secularism, and the removal of traditional privileges, seeking to reconstruct society through rational principles and direct democratic participation.",
@@ -1175,6 +1352,10 @@ const descriptions = {
     "Democratic Transhumanism": "A socio-political philosophy pioneered by James Hughes that synthesizes social-capitalist welfare institutions with radical techno-enhancement. It advocates for universal public access to genetic engineering, cybernetics, and life extension to ensure technological progress benefits all of humanity rather than an elite oligarchy.",
     "Neo-Solidarism": "A reformist, class-collaborationist framework operating within a democratic republic. It utilizes labor-management profit sharing ('Yellow Socialism') and aggressive ecomodernist technologies—such as nuclear power and synthetic agriculture—to preserve ecological health and national social stability.",
     "Steppe Eurasianism": "A pragmatic multi-ethnic philosophy inspired by Lev Gumilev and post-Soviet statecraft in Kazakhstan. It views the Eurasian heartland as an organic bridge between Slavic and Turkic civilizations, advocating for modern infrastructure corridors, secular civic governance, technocratic planning, and balanced multi-vector diplomacy.",
+    "Classical Kemalism": "The founding ideology of the Republic of Turkey under Mustafa Kemal Atatürk, defined by the Six Arrows: Republicanism, Populism, Nationalism, Laïcité (secularism), Statism (economic dirigisme), and Reformism.",
+    "Centrist Kemalism": "Also known as Feyzioğluism after Turhan Feyzioğlu and the Republican Reliance Party, a moderate Kemalist current closer to progressive conservatism that advocates cautious, incremental social reform and anti-communism.",
+    "Catholic Social Teaching": "A body of Catholic doctrine centered on Human Dignity, the Dignity of Work, a Preferential Option for the Poor, Solidarity, Subsidiarity, Communitarianism, and environmental Stewardship, balancing worker rights and local autonomy through Christian corporatism.",
+    "Bleeding-Heart Authoritarianism": "The authoritarian counterpart to Bleeding-Heart Libertarianism. It pairs a social market or liberal capitalist economy and personal lifestyle permissiveness (such as drug and sex work legalization) with an authoritarian state dedicated to crushing conservative and reactionary forces.",
 
     /* 5. Centre-Left */
     "Nordic Model": "A social-democratic framework combining free-market capitalism with a comprehensive welfare state. It emphasizes high taxes, collective bargaining, and extensive public services to ensure social mobility and economic security.",
@@ -1187,6 +1368,14 @@ const descriptions = {
     "Progressive Corporatism": "An institutional model where state regulators, progressive trade unions, and enterprise associations negotiate national economic policy collaboratively.",
     "Left-Gaullism": "A progressive variant of Gaullism inspired by thinkers like Louis Vallon and René Capitant. It balances state-led indicative economic planning (dirigisme) and progressive taxation with an unwavering commitment to constitutional democracy, civic equality, and civil liberties.",
     "Labour Atlanticism": "A social-democratic geopolitical tradition pioneered by figures like British Foreign Secretary Ernest Bevin. It asserts that democratic socialist reforms, strong trade unions, and universal welfare states can only flourish if protected beneath a resolute, shared transatlantic collective defense pact against totalitarian expansion.",
+    "Green Social Democracy": "An ecologically oriented variant of Social Democracy that pairs a regulated social market economy and universal welfare state with aggressive environmental regulations, renewable energy transition, and circular economy policies.",
+    "Geo-Social Democracy": "A synthesis of Social Democracy and Georgism that funds a comprehensive welfare state, labor protections, and public infrastructure primarily through a Land Value Tax (LVT) on unimproved natural resources.",
+    "Christian Social Democracy": "An economically center-left and culturally center-to-right ideology born from the synthesis of Christian Democracy and Social Democracy, emphasizing solidarity, welfare, and Christian ethics.",
+    "Police Labourism": "An ideology advocating for universal healthcare, empowered labor unions, anti-communism, and government regulation to protect workers, small businesses, and consumers—mirroring Social Democracy while strongly expanding police power and street policing to combat crime.",
+    "Ecevitism": "The democratic-left ('Ortanın Solu' / Left of Center) synthesis of Kemalism and social democracy established inside the Republican People's Party (CHP) from 1965 onward by Bülent Ecevit and İsmet İnönü.",
+    "Left-Social Authoritarianism": "Also known as Socialist Social Authoritarianism, a variant of social authoritarianism sharing much in common with left-social democracy. It favors nationalizing key industries, state guidance of industry, generous welfare states, and elements of workplace democracy or worker cooperatives under strong state oversight, with socialism as a long-term goal (as seen under Gamal Abdel Nasser and Muammar Gaddafi).",
+    "Progressive Social Authoritarianism": "An economically center-to-left and culturally left-wing ideology combining social-democratic or corporatist economics with authoritarian governance. It holds that sociocultural progress requires a powerful central government capable of top-down social engineering.",
+    "Left-Wing Populism": "An economically and culturally left-wing movement that mobilizes working-class frustrations against neoliberalism and corporate elites, advocating for democratic socialism, universal healthcare, and alter-globalist reform.",
 
     /* 6. Liberal */
     "Classical Liberalism": "The foundational ideology of individual liberty, private property, and free markets. It advocates for a limited \"night-watchman state,\" the rule of law, and civil liberties, viewing government intervention as a threat to freedom.",
@@ -1201,7 +1390,14 @@ const descriptions = {
     "Muscular Liberalism": "A muscular variant of liberal democracy that combines mixed economics and civil liberties with a firm defense of national cultural identity at home and proactive liberal interventionism abroad.",
     "Liberal Atlanticism": "The post-WWII internationalist doctrine foundational to NATO and Bretton Woods. It posits that North America and Western Europe form a shared civilizational community bound by Enlightenment values, human rights, procedural democracy, and open markets, advocating for cooperative intervention and collective security to sustain a rules-based global order.",
     "Transatlantic Federalism": "A radical vision of democratic integration inspired by Clarence Streit's 'Union Now'. It asserts that treaty alliances are insufficient to secure peace, advocating instead for the formal constitutional unification of North Atlantic democracies into a single federal superstate with shared citizenship, a unified defense force, and an Atlantic parliament.",
-    
+    "New Deal Liberalism": "A center-left form of social liberalism conceived by U.S. President Franklin D. Roosevelt during the Great Depression. Unlike modern Third Way neoliberalism, it remains committed to Keynesian intervention, public works, and labor protections while staying culturally moderate.",
+    "Venizelism": "A nationalist, culturally centrist, and economically center-left republican ideology based on Greek Prime Minister Eleftherios Venizelos. It combines welfare expansion, land reform, and free education with irredentist nationalism and the Megali Idea.",
+    "Liberal Kemalism": "A synthesis of Kemalism and classical/social liberalism first developed by Ahmet Ağaoğlu and Fethi Okyar's Free Republican Party (1930). It supports secularism and republican modernization alongside free-market economics and multi-party liberal democracy.",
+    "Liberal Social Authoritarianism": "A variant of social liberalism that incorporates illiberal democracy and majoritarian executive centralization. While maintaining welfare or Third Way economic policies, it suppresses political pluralism and civil liberties during crises through emergency powers and state oversight.",
+    "Technoliberalism": "Described by Adam Fish as the belief that network technologies resolve the contradictions between Classical Liberal free markets and Social Liberal welfare. It champions regulated markets, fair corporate taxation, strict environmental protection, civil liberties, and technological progress.",
+    "American Model": "The political and economic framework of the United States, characterized by free-enterprise capitalism, constitutional republicanism, representative democracy, federalism, and strong constitutional protections for speech and gun ownership.",
+    "Techno-Neoliberalism": "An ideology advocating for the synthesis of technocratic governance and advanced technology to uphold global capitalism, liberal democracy, and the international rules-based order.",
+
     /* 7. Socialist */
     "Christian Socialism": "An ideology that views the teachings of Jesus as fundamentally opposed to capitalism. It advocates for social justice, wealth redistribution, and the common ownership of resources based on religious ethics and solidarity.",
     "National Bolshevism": "A syncretic ideology combining Bolshevik economic radicalism with extreme ethnic nationalism. It seeks a National Revolution to overthrow the liberal order, often advocating for a Eurasian or nationalist-socialist superstate.",
@@ -1212,6 +1408,11 @@ const descriptions = {
     "Utopian Communitarianism": "A peaceful socialist movement seeking to build voluntary, intentional moral communities based on shared property and collective cooperation.",
     "Syndicalist Republicanism": "A parliamentary or constitutional republic where governance and representation are anchored directly in democratic trade unions.",
     "Left-Eurasianism": "A socialist current of the Eurasianist movement that emerged in Paris during the late 1920s. It interprets the Bolshevik revolution as a subconscious civilizational revolt casting off Western bourgeois culture, seeking to merge planned socialist economics and worker councils with Eurasian continental identity.",
+    "Socialist Kemalism": "Also known as Kadroism after the 1930s magazine Kadro founded by Şevket Süreyya Aydemir. It advances a non-Marxist, state-socialist vanguard interpretation of Kemalism where an intellectual-military elite directs planned industrialization from above.",
+    "Socialist Technoliberalism": "A left-wing variant of technoliberalism that replaces social capitalism with a market-socialist economy and favors alter-globalization over corporate economic globalization.",
+    "Mugabeism": "A left-wing, pan-Africanist, and anti-imperialist populist ideology based on Zimbabwean President Robert Mugabe, blending agrarian land redistribution and Marxist-Leninist influences with African nationalism and social conservatism.",
+    "Old Left-Populism": "A socially conservative, economically socialist populist ideology that champions free healthcare, full employment, and working-class representation while aggressively rejecting New Left identity politics and progressive social causes.",
+    "Left-State Liberalism": "An authoritarian, culturally far-left ideology acting as the socialist-rhetoric analog to State Liberalism. While adopting leftist economic discourse as a facade, in practice it perpetuates state-backed liberal capitalism while enforcing compulsory identity politics.",
 
     /* 8. Marxist */
     "Italian Left Communism": "A variant that rejects parliamentarianism and trade unions, emphasizing a pure Marxist party. It critiques the USSR as state capitalist and advocates for a global, uncompromising proletarian revolution.",
@@ -1232,6 +1433,7 @@ const descriptions = {
     "Guevarism": "A guerrilla revolutionary theory (Foco theory) advocating for small, armed insurgent bands to ignite broad socialist revolution across the developing world.",
     "Cyber-Communism": "A communist vision that relies on supercomputing, artificial intelligence, and cybernetic networks to distribute goods according to human need without money or classes.",
     "De Leonism": "A Marxist-industrial framework combining political party action with revolutionary industrial unionism to directly capture and operate the means of production.",
+    "Marxism-Kemalism": "A far-left synthesis championed by 1960s–70s Turkish revolutionary youth leaders like Deniz Gezmiş (THKO) and Mahir Çayan (THKP/C), viewing Marxist-Leninist anti-imperialist struggle as a 'Second National Independence War' completing Mustafa Kemal's revolution.",
 
     /* 9. Left-Libertarian */
     "Communalism": "Proposed by Murray Bookchin, it seeks to replace the state with a network of directly democratic, local popular assemblies. It integrates ecological concerns with a post-scarcity vision of self-governing, confederated urban and rural communities.",
@@ -1246,6 +1448,7 @@ const descriptions = {
     "Fourierism": "An early utopian socialist philosophy founded by Charles Fourier. It proposes organizing society into voluntary, self-contained cooperative communities ('phalanxes') that operate on mutual passion, radical gender equality, and minimal central state oversight.",
     "Gandhian Socialism": "A philosophy developed by Mahatma Gandhi (Sarvodaya) grounded in spiritual metaphysics and village self-reliance. It advocates for worker-cooperative market socialism, direct village democracy (Panchayati Raj), peaceful internationalism, and the preservation of decentralized artisan craft over ecocidal industrial machinery.",
     "Scythianism": "A romantic, anti-modern revolutionary movement in 1917 Russia inspired by Alexander Blok and Andrei Bely. Rejecting Western industrial rationalism, it champions an untamed, Dionysian socialist revival rooted in nomadic steppe vitality, agrarian communalism, and complete spiritual liberation.",
+    "Proutism": "Progressive Utilization Theory (PROUT), a progressive libertarian-left philosophy theorized by Prabhat Ranjan Sarkar in 1959. Rejecting both capitalism and communism, it advocates for economic democracy, locally self-sufficient cooperative zones, a world federation, and universal rights for humans, animals, and plants.",
 
     /* 10. Centre-Libertarian */
     "Geolibertarianism": "A synthesis of libertarianism and Georgism. It asserts that individuals own their labor, but land and natural resources are common property, often advocating for a land value tax to fund limited government functions.",
@@ -1256,6 +1459,8 @@ const descriptions = {
     "Pirate Politics": "A civil-libertarian movement focusing on digital rights, freedom of information, direct digital democracy, open-source technology, and personal privacy.",
     "Agorist Minarchism": "A strategy using counter-economic grey and black markets to reduce state power to a strict minimum protective threshold.",
     "Communal Distributism": "A left-libertarian approach emphasizing small-scale private ownership integrated into cooperative community assemblies and local municipal credit.",
+    "Yangism": "A center-libertarian, forward-looking ideology based on Andrew Yang's platform of 'Human-Centered Capitalism,' featuring a Universal Basic Income ($1,000/month Freedom Dividend) to counter automation, Medicare for All, and data-driven governance.",
+    "Libertarian Social Democracy": "Also known as Left-Leaning Social Libertarianism, an ideology that amplifies social-libertarian principles—such as UBI, Medicare for All, and paid family leave funded via Land Value or progressive taxation—under a strictly non-interfering, anti-war libertarian state.",
 
     /* 11. Right-Libertarian */
     "Neolibertarianism": "Combines libertarian domestic policy with a neoconservative, interventionist foreign policy. It supports free markets at home while advocating for the use of military power to spread democratic values and liberty across the globe.",
@@ -1277,7 +1482,8 @@ const descriptions = {
     "Solarpunk Anarchism": "A vision of horizontal, ecologically harmonious society powered by decentralized renewable energy, community gardens, and open-source eco-technology.",
     "Christian Anarchism": "An anti-state, pacifist philosophy viewing the teachings of Jesus and the Sermon on the Mount as a radical rejection of state coercion and violence.",
     "Insurrectionary Anarchism": "A revolutionary anarchist approach prioritizing immediate, informal direct action and informal affinity groups over formal mass organizations.",
-
+    "Catholic Workerism": "A libertarian-left Christian anarchist movement founded on the ideals of Dorothy Day and Peter Maurin, advocating for autonomous, stateless Catholic communities practicing voluntary poverty, pacifism, and the charity of Jesus Christ.",
+    
     /* 13. Centre-Anarchist */
     "Mutualism": "Founded by Pierre-Joseph Proudhon, it advocates for a society where workers own their means of production. It relies on a \"bank of the people\" for interest-free credit and trade based on labor-value equivalence.",
     "Market Anarchism": "An anti-capitalist philosophy that supports freed markets as a means to abolish authority. It champions worker cooperatives and mutual aid, arguing that without state intervention, corporate monopolies and wage labor would naturally collapse.",
