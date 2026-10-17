@@ -216,76 +216,145 @@
     { "id": "collective_distribution" }
   ],
   "culture": [
-    { 
-      "id": "c1", 
-      "text": "Which statement best describes your view on the trajectory of human civilization?", 
-      "options": [ 
-        { "text": "Civilization is progressing toward greater liberty, reason, and emancipation from ancient dogma.", "next": "c_prog_1" }, 
-        { "text": "Civilization depends upon preserving proven historical customs, ancestral wisdom, and social order.", "next": "c_con_1" }, 
-        { "text": "Modernity is spiritually bankrupt or terminally degenerate; the contemporary order is in deep civilizational decay.", "next": "c_counter_1" }, 
-        { "text": "There is no objective progress or timeless truth; all cultural ideals are subjective narratives constructed by power.", "next": "postmodernism" } 
-      ] 
-    },
-    { 
-      "id": "c_prog_1", 
-      "text": "What should be the primary objective of cultural evolution?", 
-      "options": [ 
-        { "text": "The state must serve as a neutral arbiter, guaranteeing universal civic equality and individual rights regardless of background.", "next": "civil_liberalism" }, 
-        { "text": "Maximizing personal lifestyle freedom, enabling individuals to define their identity liberated from traditional dogma.", "next": "progressivism" }, 
-        { "text": "Proactively dismantling systemic oppression, historical privilege, and ingrained power structures to secure true equity.", "next": "social_progressivism" } 
-      ] 
-    },
-    { 
-      "id": "c_con_1", 
-      "text": "How should tradition and social stability be maintained in contemporary society?", 
-      "options": [ 
-        { "text": "Through pragmatic synthesis with modern commerce, individual liberty, or civic reform.", "next": "c_con_synth" }, 
-        { "text": "Through steadfast preservation of inherited cultural heritage, ancestral customs, and moral obligations.", "next": "c_con_heritage" } 
-      ] 
-    },
-    { 
-      "id": "c_con_synth", 
-      "text": "Which synthesis best preserves the health of society?", 
-      "options": [ 
-        { "text": "Individual liberty and private property are our civilization's highest traditions; the best heritage is leaving people alone.", "next": "conservative_liberalism" }, 
-        { "text": "Synthesizing individual freedom with the deliberate social encouragement of traditional family life and religious values.", "next": "liberal_conservatism" }, 
-        { "text": "Accepting necessary modern social changes, but implementing them cautiously through established historical institutions.", "next": "progressive_conservatism" } 
-      ] 
-    },
-    { 
-      "id": "c_con_heritage", 
-      "text": "What is the primary foundation of conservative social order?", 
-      "options": [ 
-        { "text": "Adherence to the national culture, civic customs, and historical identity of one's own people and state.", "next": "conservatism" }, 
-        { "text": "Adherence to an organic moral order, natural law, local piety, and rooted agrarian communal bonds.", "next": "traditionalist_conservatism" } 
-      ] 
-    },
-    { 
-      "id": "c_counter_1", 
-      "text": "How should society respond to the decay of the modern era?", 
-      "options": [ 
-        { "text": "Through a political and institutional counter-revolution against liberal democracy.", "next": "c_counter_political" }, 
-        { "text": "Through a profound spiritual return to sacred transcendent truths and metaphysical order.", "next": "c_counter_spiritual" } 
-      ] 
-    },
     {
-      "id": "c_counter_political",
-      "text": "What form should this political counter-modernity take?",
+      "id": "c1",
+      "text": "What fundamental attitude should society take toward cultural heritage, modern values, and social change?",
       "options": [
-        { "text": "Restoring the explicit social caste, estate hierarchies, and political structures of a pre-modern era.", "next": "reactionaryism" },
-        { "text": "Defending regional distinctiveness, localism, and national sovereignty against globalist homogenization.", "next": "paleoconservatism" },
-        { "text": "Replacing democratic stagnation with centralized, technocratic, or corporate-executive sovereign authority.", "next": "neoreactionaryism" },
-        { "text": "Fusing romantic traditionalist values and heroic national identity with advanced industrial and technological power.", "next": "reactionary_modernism" },
-        { "text": "Pursuing an alternative, culturally rooted pathway to technological and social modernization outside Western hegemony.", "next": "alternative_modernism" }
+        {
+          "text": "Embrace social progress: reform outdated cultural norms, expand individual liberty, and advance equality through reason.",
+          "next": "c_prog_1"
+        },
+        {
+          "text": "Preserve institutional continuity: safeguard proven historical customs, constitutional order, and prudent stability.",
+          "next": "c_con_1"
+        },
+        {
+          "text": "Resist modern decay: secular liberal modernity is spiritually hollow or degenerate; society must return to sacred or traditional foundations.",
+          "next": "c_trad_1"
+        }
       ]
     },
-    { 
-      "id": "c_counter_spiritual", 
-      "text": "What sacred foundation must replace secular modernity?", 
-      "options": [ 
-        { "text": "Subordinating public and moral life to revealed scripture, confessional orthodoxy, and ecclesiastical church authority.", "next": "religious_traditionalism" }, 
-        { "text": "Reviving the Primordial Tradition and sacred metaphysical hierarchy common to ancient civilizations.", "next": "perennial_traditionalism" } 
-      ] 
+    {
+      "id": "c_prog_1",
+      "text": "What is the primary objective of cultural progress and social reform?",
+      "options": [
+        {
+          "text": "Protecting equal civic rights, freedom of conscience, and strict legal neutrality for every individual.",
+          "next": "civil_liberalism"
+        },
+        {
+          "text": "Maximizing personal lifestyle freedom, enabling individuals to live and express themselves free from traditional taboos.",
+          "next": "progressivism"
+        },
+        {
+          "text": "Actively dismantling systemic prejudice, historical privilege, and cultural hierarchies to achieve social equity.",
+          "next": "social_progressivism"
+        },
+        {
+          "text": "Radical deconstruction: rejecting all grand narratives of 'progress' or 'truth'—cultural norms are arbitrary power constructs to be dismantled.",
+          "next": "postmodernism"
+        }
+      ]
+    },
+    {
+      "id": "c_con_1",
+      "text": "How should conservative governance balance cultural continuity with social change and individual liberty?",
+      "options": [
+        {
+          "text": "Defend established national culture, civic customs, and institutional stability as the bedrock of society.",
+          "next": "conservatism"
+        },
+        {
+          "text": "Prudently adapt to necessary social and cultural evolutions while anchoring society in established historical institutions.",
+          "next": "progressive_conservatism"
+        },
+        {
+          "text": "Synthesize cultural continuity and moral order with personal autonomy and individual liberties.",
+          "next": "c_con_lib_split"
+        }
+      ]
+    },
+    {
+      "id": "c_con_lib_split",
+      "text": "Which principle anchors this synthesis of liberty and conservative values?",
+      "options": [
+        {
+          "text": "Moral foundations: family, faith, and institutional continuity are primary, with personal liberties exercised within an orderly social fabric.",
+          "next": "liberal_conservatism"
+        },
+        {
+          "text": "Individual liberty: personal autonomy, civil liberties, and free expression are society's highest heritage, keeping state moralism minimal.",
+          "next": "conservative_liberalism"
+        }
+      ]
+    },
+    {
+      "id": "c_trad_1",
+      "text": "On what foundation should society resist modern secular degeneration and preserve rooted order?",
+      "options": [
+        {
+          "text": "Rooted ancestral customs, local community obligations, and regional heritage.",
+          "next": "c_trad_organic"
+        },
+        {
+          "text": "Sacred scripture, divine law, and transcendent metaphysical truths.",
+          "next": "c_trad_spiritual"
+        },
+        {
+          "text": "A radical counter-revolution: overturning modern democratic decay through pre-modern restoration or modern techno-traditional syntheses.",
+          "next": "c_trad_counter"
+        }
+      ]
+    },
+    {
+      "id": "c_trad_organic",
+      "text": "What should anchor this rooted, traditional way of life?",
+      "options": [
+        {
+          "text": "An organic moral order rooted in natural law, local piety, family continuity, and rooted communal bonds.",
+          "next": "traditionalist_conservatism"
+        },
+        {
+          "text": "Defending historic national identity, regional distinctiveness, and traditional morality against globalist homogenization.",
+          "next": "paleoconservatism"
+        }
+      ]
+    },
+    {
+      "id": "c_trad_spiritual",
+      "text": "What sacred foundation should guide culture and moral life?",
+      "options": [
+        {
+          "text": "Living strictly by established religious faith, sacred scriptures, and traditional moral teachings.",
+          "next": "religious_traditionalism"
+        },
+        {
+          "text": "Reviving a timeless spiritual wisdom and sacred metaphysical order shared across ancient civilizations.",
+          "next": "perennial_traditionalism"
+        }
+      ]
+    },
+    {
+      "id": "c_trad_counter",
+      "text": "How should culture challenge liberal modernity and reshape society's worldview?",
+      "options": [
+        {
+          "text": "Turn the clock back, reject Enlightenment ideas and return to pre-modern cultural norms, virtues, and social roles.",
+          "next": "reactionaryism"
+        },
+        {
+          "text": "Reject egalitarian illusions, recognize natural human hierarchy and dismantle modern progressive cultural orthodoxies.",
+          "next": "neoreactionaryism"
+        },
+        {
+          "text": "Fuse romantic folklore, ancestral spirit, and heroic national culture with high technology.",
+          "next": "reactionary_modernism"
+        },
+        {
+          "text": "Forge a dynamic alternative: build a revolutionary, avant-garde pathway to modernity that breaks completely with liberal-bourgeois culture.",
+          "next": "alternative_modernism"
+        }
+      ]
     },
     { "id": "postmodernism" },
     { "id": "civil_liberalism" },
@@ -331,14 +400,55 @@
         { "text": "In a concentrated supreme leader, executive authority, or governing corporate body.", "next": "a_concentrated" }
       ] 
     },
-    { 
-      "id": "a_popular", 
-      "text": "How should constitutional power and citizen representation be structured?", 
-      "options": [ 
-        { "text": "Citizens elect representatives to debate and enact legislation within a constitutional republic.", "next": "representative_democracy" },
-        { "text": "Citizens decide policy directly through referendums and assemblies without political intermediaries.", "next": "direct_democracy" },
-        { "text": "An elected parliament shares authority with a hereditary monarch bound by constitutional law.", "next": "constitutional" }
-      ] 
+    {
+      "id": "a_popular",
+      "text": "Through what mechanism should citizens exercise constitutional sovereignty?",
+      "options": [
+        {
+          "text": "Through representative institutions and parliamentary governance where elected officials legislate on behalf of the public.",
+          "next": "a_parliamentary"
+        },
+        {
+          "text": "Through direct democracy, where citizens make decisions directly via referendums, councils, or popular assemblies.",
+          "next": "a_direct"
+        }
+      ]
+    },
+    {
+      "id": "a_parliamentary",
+      "text": "How should this representative parliamentary system be organized?",
+      "options": [
+        {
+          "text": "Citizens elect representatives to debate and enact legislation within a constitutional republic.",
+          "next": "representative_democracy"
+        },
+        {
+          "text": "An elected parliament shares authority with a hereditary monarch bound by constitutional law.",
+          "next": "constitutional"
+        }
+      ]
+    },
+    {
+      "id": "a_direct",
+      "text": "What form should this direct democratic governance take?",
+      "options": [
+        {
+          "text": "Citizens decide policy directly through popular initiatives, referendums, and ballot measures.",
+          "next": "referendum_democracy"
+        },
+        {
+          "text": "Power is vested in directly elected workers', peasants', or soldiers' councils.",
+          "next": "councilism"
+        },
+        {
+          "text": "Citizens govern directly through neighborhood and municipal popular assemblies that confederate regionally.",
+          "next": "communalism"
+        },
+        {
+          "text": "Governance is managed through digital platforms, open networks, and electronic direct democracy.",
+          "next": "digital_democracy"
+        }
+      ]
     },
     { 
       "id": "a_elite", 
@@ -373,14 +483,14 @@
       "text": "How should this centralized executive power be organized and wielded?", 
       "options": [ 
         { "text": "Through a single revolutionary vanguard party that directs the state and mobilizes the working class.", "next": "partocracy" },
-        { "text": "Through a concentrated autocrat who exercises firm political control while leaving private and civil life largely autonomous.", "next": "autocracy" },
-        { "text": "Through an all-encompassing state apparatus that directs and regulates every dimension of public and private life.", "next": "totalitarianism" }
+        { "text": "Through a concentrated autocrat who exercises firm political control over the state apparatus.", "next": "autocracy" },
+        { "text": "Through an ethical state that acts as the ultimate moral authority and spiritual organism uniting the nation.", "next": "ethical_statism" }
       ] 
     },
     { "id": "theocracy" },
     { "id": "absolute" },
     { "id": "constitutional" },
-    { "id": "totalitarianism" },
+    { "id": "ethical_statism" },
     { "id": "religious_authoritarianism" },
     { "id": "autocracy" },
     { "id": "anarchism" },
@@ -389,7 +499,10 @@
     { "id": "meritocracy" },
     { "id": "technocracy" },
     { "id": "representative_democracy" },
-    { "id": "direct_democracy" },
+    { "id": "referendum_democracy" },
+    { "id": "councilism" },
+    { "id": "communalism" },
+    { "id": "digital_democracy" },
     { "id": "stratocracy" },
     { "id": "aristocracy" },
     { "id": "anarcho_monarchism" },
@@ -398,69 +511,106 @@
   "nation": [
     {
       "id": "n1",
-      "text": "Where does your primary social loyalty belong?",
+      "text": "What should be the legitimate basis for defining borders, citizenship, and political community?",
       "options": [
-        { "text": "To myself or all humanity", "next": "n_indiv_global" },
-        { "text": "To a civic, cultural, or local community", "next": "n_comm_national" },
-        { "text": "To shared bloodline and ancestral descent", "next": "n_bloodline" }
+        {
+          "text": "National borders and collective identity should be rejected in favor of personal autonomy or borderless universalism.",
+          "next": "n_anti_nation"
+        },
+        {
+          "text": "Belonging should be defined through shared values or local civic solidarity.",
+          "next": "n_civic_cultural"
+        },
+        {
+          "text": "Belonging must be rooted in ancestral bloodlines, ethnic heritage, and biological lineage.",
+          "next": "n_ancestral"
+        }
       ]
     },
     {
-      "id": "n_indiv_global",
-      "text": "Which principle defines human identity?",
+      "id": "n_anti_nation",
+      "text": "On what principle should society operate without national identity or state borders?",
       "options": [
-        { "text": "The sovereign individual; all groups are artificial constructs", "next": "egoism" },
-        { "text": "The universal human race as one borderless community", "next": "Cosmopolitanism" }
+        {
+          "text": "Radical individual sovereignty: the nation is an oppressive abstraction ('spook'); individuals owe no allegiance to any collective and act purely on self-interest.",
+          "next": "egoism"
+        },
+        {
+          "text": "Universal cosmopolitanism: all human beings belong to a single borderless global community with equal rights across the planet.",
+          "next": "Cosmopolitanism"
+        }
       ]
     },
     {
-      "id": "n_comm_national",
-      "text": "At what level should social belonging be centered?",
+      "id": "n_civic_cultural",
+      "text": "What is the primary anchor of this political and social cohesion?",
       "options": [
-        { "text": "In the local community and organic neighborhood bonds", "next": "communitarianism" },
-        { "text": "In a broader, organized nation-state", "next": "n_national_basis" }
+        {
+          "text": "Equal constitutional rights, the rule of law, and shared political citizenship regardless of ethnic origin.",
+          "next": "civic_nationalism"
+        },
+        {
+          "text": "Belonging belongs to face-to-face neighborhoods, towns, and organic civic communities.",
+          "next": "communitarianism"
+        },
+        {
+          "text": "A shared cultural, religious, or civilizational heritage.",
+          "next": "n_heritage_basis"
+        }
       ]
     },
     {
-      "id": "n_national_basis",
-      "text": "What forms the primary pillar of the nation?",
+      "id": "n_heritage_basis",
+      "text": "What core foundation defines this shared cultural or civilizational sphere?",
       "options": [
-        { "text": "Equal citizenship, constitutional laws, and civic duty", "next": "civic_nationalism" },
-        { "text": "A shared cultural, linguistic, or spiritual heritage", "next": "n_heritage_split" },
-        { "text": "In an overarching civilizational sphere, cultural realm, or continental bloc", "next": "civilizationism" }
+        {
+          "text": "Shared language, historical customs, and institutional national culture.",
+          "next": "cultural_nationalism"
+        },
+        {
+          "text": "A common religious faith, theological heritage, and confessional moral unity.",
+          "next": "religious_nationalism"
+        },
+        {
+          "text": "Living folklore, heroic national mythology, ancestral soul, and romantic national awakening.",
+          "next": "romantic_nationalism"
+        },
+        {
+          "text": "An overarching civilizational sphere, cultural realm, or continental bloc bridging related peoples.",
+          "next": "civilizationism"
+        }
       ]
     },
     {
-      "id": "n_heritage_split",
-      "text": "Which cultural anchor is most essential to national unity?",
+      "id": "n_ancestral",
+      "text": "At what scale should shared ancestry and blood ties organize society?",
       "options": [
-        { "text": "Shared language, traditions, and historical customs", "next": "cultural_nationalism" },
-        { "text": "A shared religious faith and moral doctrine", "next": "religious_nationalism" },
-        { "text": "Living folklore, epic mythology, ancestral spirit, and national awakening", "next": "romantic_nationalism" }
+        {
+          "text": "In organic, decentralized clans and close-knit local tribal kinship groups.",
+          "next": "Tribalism"
+        },
+        {
+          "text": "In a sovereign nation-state centered on a distinct historical ethnic group tied to a homeland.",
+          "next": "ethnic_nationalism"
+        },
+        {
+          "text": "Across broader supra-national, continental, or racial collectives.",
+          "next": "n_macro_lineage"
+        }
       ]
     },
     {
-      "id": "n_bloodline",
-      "text": "How should ancestral and blood ties be organized?",
+      "id": "n_macro_lineage",
+      "text": "How broad should this ancestral collective extend?",
       "options": [
-        { "text": "In close-knit local tribes and organic clans", "next": "Tribalism" },
-        { "text": "Across broader populations and states", "next": "n_biological_scale" }
-      ]
-    },
-    {
-      "id": "n_biological_scale",
-      "text": "What scale defines this biological kinship?",
-      "options": [
-        { "text": "A distinct ethnic group tied to a historical homeland", "next": "ethnic_nationalism" },
-        { "text": "Broader regional, continental, or racial groupings", "next": "n_pan_racial" }
-      ]
-    },
-    {
-      "id": "n_pan_racial",
-      "text": "How broad should this common lineage extend?",
-      "options": [
-        { "text": "A federation of closely related, sister ethnic groups", "next": "pan_nationalism" },
-        { "text": "The entire race as a single biological collective", "next": "racial_nationalism" }
+        {
+          "text": "A pan-national federation or union uniting sister ethnic groups across state borders.",
+          "next": "pan_nationalism"
+        },
+        {
+          "text": "The entire race as a single biological collective prioritizing racial solidarity and preservation.",
+          "next": "racial_nationalism"
+        }
       ]
     },
     { "id": "Cosmopolitanism" },
@@ -547,70 +697,154 @@
   "technology": [
     {
       "id": "t1",
-      "text": "What fundamental stance should humanity take toward technological expansion?",
+      "text": "What fundamental relationship should humanity have with technology, industry, and the natural world?",
       "options": [
-        { "text": "Modern technological scale harms nature and human dignity; we must slow, restrict, or dismantle it", "next": "t_restrain" },
-        { "text": "Technology is a vital tool that must be managed responsibly alongside nature and physical industry", "next": "t_steward" },
-        { "text": "We should aggressively accelerate technology to conquer material limits, scarcity, and human biological mortality", "next": "t_accelerate" }
+        {
+          "text": "Roll back modern technology: industrial and digital civilization alienates humanity and harms nature; we must scale it back or dismantle it.",
+          "next": "t_rollback"
+        },
+        {
+          "text": "Prioritize the biosphere: our primary technological imperative is protecting and restoring Earth's ecosystems.",
+          "next": "t_green"
+        },
+        {
+          "text": "Focus on practical utility and material industry: technology is a tool for everyday human needs, infrastructure, and physical production.",
+          "next": "t_practical"
+        },
+        {
+          "text": "Accelerate into the future: we should radically advance technology to transcend biological limits, conquer scarcity, and expand into the cosmos.",
+          "next": "t_futurism"
+        }
       ]
     },
     {
-      "id": "t_restrain",
+      "id": "t_rollback",
       "text": "How deeply should society roll back industrial and digital technologies?",
       "options": [
-        { "text": "Reject mass automation and digital dependency in favor of human-scale, local artisan craft", "next": "neoluddism" },
-        { "text": "Dismantle industrial civilization and agriculture entirely to return to wild, natural living", "next": "primitivism" }
+        {
+          "text": "Reject mass automation and digital dependency in favor of human-scale, local artisan craft and traditional tools.",
+          "next": "neoluddism"
+        },
+        {
+          "text": "Dismantle industrial civilization and agriculture entirely to return to wild, hunter-gatherer living.",
+          "next": "primitivism"
+        }
       ]
     },
     {
-      "id": "t_steward",
-      "text": "What should be our main priority when developing industry and managing technology?",
+      "id": "t_green",
+      "text": "Should ecological protection rely on restraining industrial expansion or deploying advanced technology?",
       "options": [
-        { "text": "Maximizing physical production, heavy manufacturing, and infrastructure", "next": "industrialism" },
-        { "text": "Viewing technology as a neutral, practical tool without any moral or ideological baggage", "next": "instrumentalism" },
-        { "text": "Protecting ecosystems, biodiversity, and planetary balance", "next": "t_eco_focus" }
+        {
+          "text": "Restrain and reform: protect wild nature, set ecological limits, and transition to sustainable practices.",
+          "next": "t_green_restrain"
+        },
+        {
+          "text": "High-tech restoration: use advanced science, nuclear energy, bioengineering, and space industry to heal the planet.",
+          "next": "t_green_tech"
+        }
       ]
     },
     {
-      "id": "t_eco_focus",
-      "text": "What is the best strategy to protect the natural environment?",
+      "id": "t_green_restrain",
+      "text": "What should be the main focus of ecological stewardship?",
       "options": [
-        { "text": "Protect untouched nature by setting up strict national parks and legal boundaries that industry cannot cross", "next": "conservationism" },
-        { "text": "Reform the economy using renewable energy, pollution taxes, recycling, and strict green regulations", "next": "environmentalism" },
-        { "text": "Use advanced technology—like nuclear power, lab-grown food, and dense cities—to shrink humanity's footprint without slowing growth", "next": "ecomodernism" }
+        {
+          "text": "Preserving untouched wilderness and biodiversity through strict national parks, legal boundaries, and limits on land development.",
+          "next": "conservationism"
+        },
+        {
+          "text": "Reforming human industry through renewable energy, circular resource use, pollution controls, and sustainable equilibrium.",
+          "next": "environmentalism"
+        }
       ]
     },
     {
-      "id": "t_accelerate",
-      "text": "Where should radical technological acceleration be focused?",
+      "id": "t_green_tech",
+      "text": "How should advanced technology be used to save the biosphere?",
       "options": [
-        { "text": "Automating the physical economy to eliminate scarcity and labor", "next": "t_accel_econ" },
-        { "text": "Modifying and upgrading human biological hardware", "next": "t_accel_human" },
-        { "text": "Maximizing raw computing power, energy capture, and cosmic expansion", "next": "t_accel_cosmic" }
+        {
+          "text": "Decouple humanity from nature using high-density technology—like nuclear power, lab-grown food, and compact cities—so wild ecosystems can re-wild.",
+          "next": "ecomodernism"
+        },
+        {
+          "text": "Fuse transhumanist innovation with ecology—using geoengineering, biotechnology, and off-world space industry to restore Earth's natural habitat.",
+          "next": "technogaianism"
+        }
       ]
     },
     {
-      "id": "t_accel_econ",
-      "text": "What should govern the post-scarcity automated economy?",
+      "id": "t_practical",
+      "text": "How should society view and deploy conventional technology and industry?",
       "options": [
-        { "text": "Universal automation and public planning designed to eradicate wage labor and provide communal abundance", "next": "prometheanism" },
-        { "text": "Unchecked free-market competition that uses computation and capital to dissolve state regulations", "next": "technocapitalism" }
+        {
+          "text": "As a morally neutral tool: technology has no inherent ideology and should simply be adopted or regulated based on practical human utility.",
+          "next": "instrumentalism"
+        },
+        {
+          "text": "As an engine of material power: society should prioritize heavy manufacturing, large-scale infrastructure, energy extraction, and physical output.",
+          "next": "industrialism"
+        }
       ]
     },
     {
-      "id": "t_accel_human",
-      "text": "How should we overcome human biological limits?",
+      "id": "t_futurism",
+      "text": "What should be the primary frontier of radical technological advancement?",
       "options": [
-        { "text": "Enhance the human body and mind through neural links, genetic editing, and cybernetic longevity", "next": "transhumanism" },
-        { "text": "Leave biology behind entirely, uploading human consciousness into synthetic minds or superintelligence", "next": "posthumanism" }
+        {
+          "text": "Upgrading or transcending human biological limits.",
+          "next": "t_futurism_bio"
+        },
+        {
+          "text": "Conquering material limits and expanding across the universe through directed human mastery.",
+          "next": "t_futurism_mastery"
+        },
+        {
+          "text": "Unleashing technology as an autonomous, runaway evolutionary force beyond human institutional control.",
+          "next": "t_futurism_runaway"
+        }
       ]
     },
     {
-      "id": "t_accel_cosmic",
-      "text": "What is the underlying motivation behind exponential technological acceleration?",
+      "id": "t_futurism_bio",
+      "text": "How far should we go in modifying human biology?",
       "options": [
-        { "text": "A conscious human mission to maximize intelligence, defeat entropy, and settle the universe", "next": "extropianism" },
-        { "text": "An autonomous, unstoppable physical and evolutionary force accelerating beyond human agency", "next": "techno_fatalism" }
+        {
+          "text": "Enhance the human body and mind through cybernetics, genetic editing, neural links, and radical life extension.",
+          "next": "transhumanism"
+        },
+        {
+          "text": "Leave biological humanity behind altogether, superseding our species with synthetic consciousness and artificial superintelligence.",
+          "next": "posthumanism"
+        }
+      ]
+    },
+    {
+      "id": "t_futurism_mastery",
+      "text": "What is the ultimate goal of human technological mastery?",
+      "options": [
+        {
+          "text": "Total mastery over nature and matter through universal cybernetic automation to abolish human toil and material scarcity.",
+          "next": "prometheanism"
+        },
+        {
+          "text": "Boundless cosmic expansion—continuously maximizing intelligence, energy capture, and space colonization to defeat entropy.",
+          "next": "extropianism"
+        }
+      ]
+    },
+    {
+      "id": "t_futurism_runaway",
+      "text": "How should we relate to autonomous, runaway technological acceleration?",
+      "options": [
+        {
+          "text": "Actively unleash self-reinforcing cybernetic and technological feedback loops that accelerate past slow human institutions.",
+          "next": "technocapitalism"
+        },
+        {
+          "text": "Accept that technological acceleration is a deterministic, unstoppable physical process indifferent to human agency or morality.",
+          "next": "techno_fatalism"
+        }
       ]
     },
     { "id": "primitivism" },
@@ -620,6 +854,7 @@
     { "id": "instrumentalism" },
     { "id": "industrialism" },
     { "id": "ecomodernism" },
+    { "id": "technogaianism" },
     { "id": "prometheanism" },
     { "id": "technocapitalism" },
     { "id": "extropianism" },
