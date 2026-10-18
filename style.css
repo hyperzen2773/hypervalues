@@ -398,6 +398,34 @@ a:hover {
     margin-top: -5px;
 }
 
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 0px;
+}
+
+.footer-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-icon {
+    width: 70px;
+    height: 70px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer-icon-link:hover .footer-icon {
+    opacity: 1;
+    transform: scale(1.12);
+}
+
 /* Mobile */
 @media (max-width: 800px) {
     #results-container {
