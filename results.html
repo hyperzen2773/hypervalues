@@ -14,7 +14,7 @@
         <div class="top-section">
             <div class="title-container">
                 <h1>NeoValues</h1>
-                <span class="version-text">v3.3</span>
+                <span class="version-text">v3.4</span>
             </div>
             <div id="results-container"></div>
         </div>
@@ -149,7 +149,7 @@
             secondaryLabelDiv.style.borderColor = labelColors[nextMatch.label] || "#7a7a7a";
             secondaryLabelDiv.style.color = labelColors[nextMatch.label] || "#7a7a7a";
 
-            secondaryLabelDiv.innerHTML = `<a href="description.html?id=${encodeURIComponent(nextMatch.label)}&type=ideology" style="color: inherit; text-decoration: none; display: block;">Next closest match: ${nextMatch.label} (${nextMatch.identicalCount}/${categories.length})</a>`;
+            secondaryLabelDiv.innerHTML = `<a href="description.html?id=${encodeURIComponent(nextMatch.label)}&type=ideology" style="color: inherit; text-decoration: none; display: block;">Next closest match: ${nextMatch.label} (${nextMatch.identicalCount}/${nextMatch.totalRequired})</a>`;
         } else {
             secondaryLabelDiv.style.display = "none";
         }
