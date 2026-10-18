@@ -767,170 +767,170 @@
   "technology": [
     {
       "id": "t1",
-      "text": "What fundamental relationship should humanity have with technology, industry, and the natural world?",
+      "text": "What direction should society take with technology and production?",
       "options": [
         {
-          "text": "Roll back modern technology: industrial and digital civilization alienates humanity and harms nature; we must scale it back or dismantle it.",
-          "next": "t_rollback"
+          "text": "Step away from heavy machinery in favor of rural or low-tech living",
+          "next": "t_rural"
         },
         {
-          "text": "Prioritize the biosphere: our primary technological imperative is protecting and restoring Earth's ecosystems.",
-          "next": "t_green"
+          "text": "Focus on standard manufacturing, digital services, and environmental balance",
+          "next": "t_standard"
         },
         {
-          "text": "Focus on practical utility and material industry: technology is a tool for everyday human needs, infrastructure, and physical production.",
-          "next": "t_practical"
-        },
-        {
-          "text": "Accelerate into the future: we should radically advance technology to transcend biological limits, conquer scarcity, and expand into the cosmos.",
-          "next": "t_futurism"
+          "text": "Develop advanced technologies to reshape the future",
+          "next": "t_future"
         }
       ]
     },
     {
-      "id": "t_rollback",
-      "text": "How deeply should society roll back industrial and digital technologies?",
+      "id": "t_rural",
+      "text": "How should society live away from heavy machine industry?",
       "options": [
         {
-          "text": "Reject mass automation and digital dependency in favor of human-scale, local artisan craft and traditional tools.",
+          "text": "Build community life around farming, rural culture, and working the land",
+          "next": "agrarianism"
+        },
+        {
+          "text": "Rely on local artisan craft and hand tools while rejecting automation",
           "next": "neoluddism"
         },
         {
-          "text": "Dismantle industrial civilization and agriculture entirely to return to wild, hunter-gatherer living.",
+          "text": "Abandon civilization and farming entirely to return to hunter-gatherer life",
           "next": "primitivism"
         }
       ]
     },
     {
-      "id": "t_green",
-      "text": "Should ecological protection rely on restraining industrial expansion or deploying advanced technology?",
+      "id": "t_standard",
+      "text": "What should be the main priority for everyday industry and technology?",
       "options": [
         {
-          "text": "Protect wild nature, set ecological limits, and transition to sustainable practices.",
-          "next": "t_green_restrain"
+          "text": "Protecting natural habitats and balancing industrial activity with the environment",
+          "next": "t_eco"
         },
         {
-          "text": "Use advanced science, nuclear energy, bioengineering, and space industry to heal the planet.",
-          "next": "t_green_tech"
+          "text": "Developing manufacturing, digital infrastructure, and practical everyday tools",
+          "next": "t_production"
         }
       ]
     },
     {
-      "id": "t_green_restrain",
-      "text": "What should be the main focus of ecological stewardship?",
+      "id": "t_eco",
+      "text": "How should we maintain environmental balance?",
       "options": [
         {
-          "text": "Preserving untouched wilderness and biodiversity through strict national parks, legal boundaries, and limits on land development.",
+          "text": "Set aside protected wilderness and strictly limit human development",
           "next": "conservationism"
         },
         {
-          "text": "Reforming human industry through renewable energy, circular resource use, pollution controls, and sustainable equilibrium.",
+          "text": "Regulate industry with renewable energy, recycling, and sustainable practices",
           "next": "environmentalism"
         }
       ]
     },
     {
-      "id": "t_green_tech",
-      "text": "How should advanced technology be used to save the biosphere?",
+      "id": "t_production",
+      "text": "What kind of economy and tools should we focus on?",
       "options": [
         {
-          "text": "Decouple humanity from nature using high-density technology—like nuclear power, lab-grown food, and compact cities—so wild ecosystems can re-wild.",
+          "text": "Prioritize heavy manufacturing, factories, machine shops, and raw material extraction",
+          "next": "industrialism"
+        },
+        {
+          "text": "Shift away from heavy manufacturing toward an information, digital, and service economy",
+          "next": "post_industrialism"
+        },
+        {
+          "text": "Treat technology simply as a neutral tool to solve practical everyday problems",
+          "next": "instrumentalism"
+        }
+      ]
+    },
+    {
+      "id": "t_future",
+      "text": "Where should advanced high-tech development be directed?",
+      "options": [
+        {
+          "text": "Restoring the biosphere, enhancing human biology, or surpassing physical limits",
+          "next": "t_future_bio_eco"
+        },
+        {
+          "text": "Automating all production to eliminate scarcity and expanding into space",
+          "next": "t_mastery"
+        },
+        {
+          "text": "Unleashing technological acceleration as an unstoppable force beyond human control",
+          "next": "t_runaway"
+        }
+      ]
+    },
+    {
+      "id": "t_future_bio_eco",
+      "text": "How should advanced science transform living systems and the planet?",
+      "options": [
+        {
+          "text": "Use clean nuclear power, synthetic food, and compact cities so nature can rewild",
           "next": "ecomodernism"
         },
         {
-          "text": "Fuse transhumanist innovation with ecology—using geoengineering, biotechnology, and off-world space industry to restore Earth's natural habitat.",
+          "text": "Enhance human bodies and minds with cybernetics, gene editing, and extended lifespans",
+          "next": "transhumanism"
+        },
+        {
+          "text": "Leave biology behind entirely and upload human minds into synthetic superintelligence",
+          "next": "posthumanism"
+        },
+        {
+          "text": "Deploy genetic engineering, geoengineering, and clean biotech to repair ecosystems",
           "next": "technogaianism"
         }
       ]
     },
     {
-      "id": "t_practical",
-      "text": "How should society view and deploy conventional technology and industry?",
-      "options": [
-        {
-          "text": "As a morally neutral tool: technology has no inherent ideology and should simply be adopted or regulated based on practical human utility.",
-          "next": "instrumentalism"
-        },
-        {
-          "text": "As an engine of material power: society should prioritize heavy manufacturing, large-scale infrastructure, energy extraction, and physical output.",
-          "next": "industrialism"
-        }
-      ]
-    },
-    {
-      "id": "t_futurism",
-      "text": "What should be the primary frontier of radical technological advancement?",
-      "options": [
-        {
-          "text": "Upgrading or transcending human biological limits.",
-          "next": "t_futurism_bio"
-        },
-        {
-          "text": "Conquering material limits and expanding across the universe through directed human mastery.",
-          "next": "t_futurism_mastery"
-        },
-        {
-          "text": "Unleashing technology as an autonomous, runaway evolutionary force beyond human institutional control.",
-          "next": "t_futurism_runaway"
-        }
-      ]
-    },
-    {
-      "id": "t_futurism_bio",
-      "text": "How far should we go in modifying human biology?",
-      "options": [
-        {
-          "text": "Enhance the human body and mind through cybernetics, genetic editing, neural links, and radical life extension.",
-          "next": "transhumanism"
-        },
-        {
-          "text": "Leave biological humanity behind altogether, superseding our species with synthetic consciousness and artificial superintelligence.",
-          "next": "posthumanism"
-        }
-      ]
-    },
-    {
-      "id": "t_futurism_mastery",
+      "id": "t_mastery",
       "text": "What is the ultimate goal of human technological mastery?",
       "options": [
         {
-          "text": "Total mastery over nature and matter through universal cybernetic automation to abolish human toil and material scarcity.",
+          "text": "Automate all production to eliminate scarcity and free humans from compulsory labor",
           "next": "prometheanism"
         },
         {
-          "text": "Boundless cosmic expansion—continuously maximizing intelligence, energy capture, and space colonization to defeat entropy.",
+          "text": "Expand endlessly across the solar system and maximize cosmic energy capture",
           "next": "extropianism"
         }
       ]
     },
     {
-      "id": "t_futurism_runaway",
-      "text": "How should we relate to autonomous, runaway technological acceleration?",
+      "id": "t_runaway",
+      "text": "How should we view runaway technological growth?",
       "options": [
         {
-          "text": "Actively unleash self-reinforcing cybernetic and technological feedback loops that accelerate past slow human institutions.",
+          "text": "Speed up market competition and computing power so they outrun government regulation",
           "next": "technocapitalism"
         },
         {
-          "text": "Accept that technological acceleration is a deterministic, unstoppable physical process indifferent to human agency or morality.",
+          "text": "Accept that technological acceleration is an unstoppable physical process that cannot be controlled",
           "next": "techno_fatalism"
         }
       ]
     },
-    { "id": "primitivism" },
+    { "id": "agrarianism" },
     { "id": "neoluddism" },
+    { "id": "primitivism" },
     { "id": "conservationism" },
     { "id": "environmentalism" },
-    { "id": "instrumentalism" },
     { "id": "industrialism" },
+    { "id": "post_industrialism" },
+    { "id": "instrumentalism" },
     { "id": "ecomodernism" },
+    { "id": "transhumanism" },
+    { "id": "posthumanism" },
     { "id": "technogaianism" },
     { "id": "prometheanism" },
-    { "id": "technocapitalism" },
     { "id": "extropianism" },
-    { "id": "techno_fatalism" },
-    { "id": "transhumanism" },
-    { "id": "posthumanism" }
+    { "id": "technocapitalism" },
+    { "id": "techno_fatalism" }
   ],
   "social_control": [
     {
