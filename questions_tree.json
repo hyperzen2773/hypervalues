@@ -46,9 +46,22 @@
       "id": "e_social_universal",
       "text": "How should this universal welfare and regulated market work in practice?",
       "options": [
-        { "text": "Combine a competitive market with strong public healthcare, pensions, and strict laws against monopolies", "next": "social_market" },
-        { "text": "Give workers seats on company boards, empower unions, and push banks to invest in long-term stability over quick profits", "next": "rhine_capitalism" },
-        { "text": "Treat society as a shared community where wealth is redistributed through extensive public services and community funds", "next": "solidarism" }
+        { 
+          "text": "Combine a competitive market with strong public healthcare, pensions, and strict laws against monopolies.", 
+          "next": "social_market" 
+        },
+        { 
+          "text": "Give workers seats on company boards, empower unions, and push banks to invest in long-term stability over quick profits.", 
+          "next": "rhine_capitalism" 
+        },
+        { 
+          "text": "Maintain private business while imposing paternal duties on employers and the state to safeguard worker welfare, family security, and class harmony.", 
+          "next": "paternalistic_capitalism" 
+        },
+        { 
+          "text": "Anchor the market in a large network of mutual-benefit funds, credit unions, community enterprises, and worker-run cooperatives.", 
+          "next": "social_solidarity_economy" 
+        }
       ]
     },
     {
@@ -158,7 +171,8 @@
     },
     { "id": "social_market" },
     { "id": "rhine_capitalism" },
-    { "id": "solidarism" },
+    { "id": "paternalistic_capitalism" },
+    { "id": "social_solidarity_economy" },
     { "id": "ordnungspolitik" },
     { "id": "residualism" },
     { "id": "basic_income_capitalism" },
@@ -193,23 +207,79 @@
       "id": "r1", 
       "text": "How should society manage the funding of public needs and the distribution of common wealth?", 
       "options": [ 
-        { "text": "Through statutory taxation on economic production (such as income, commercial profits, capital, or sales).", "next": "r2.1" }, 
-        { "text": "Through a Single Tax exclusively on unimproved land and natural resources, abolishing all taxes on labor, commerce, and capital.", "next": "lvt" }, 
-        { "text": "By abolishing taxation and wage labor entirely; socialized ownership of the means of production where wealth is produced and allocated directly for human need.", "next": "collective_distribution" }, 
-        { "text": "Strictly through voluntary contributions (donations, lotteries, or user fees); all compulsory state levies are inherently illegitimate.", "next": "Voluntaryism" } 
+        { 
+          "text": "Through statutory domestic taxation on economic production (such as personal income, corporate profits, or capital).", 
+          "next": "r_production" 
+        }, 
+        { 
+          "text": "By shifting the tax burden primarily onto unimproved land and economic resource rents.", 
+          "next": "r_land" 
+        }, 
+        { 
+          "text": "By abolishing domestic income taxes in favor of consumption or external trade levies.", 
+          "next": "r_non_income" 
+        }, 
+        { 
+          "text": "By abolishing taxation and wage labor entirely; socialized ownership where wealth is produced and allocated directly for human need.", 
+          "next": "collective_distribution" 
+        }, 
+        { 
+          "text": "Strictly through voluntary contributions (donations, lotteries, or user fees); all compulsory state levies are inherently illegitimate.", 
+          "next": "Voluntaryism" 
+        } 
       ] 
     },
     { 
-      "id": "r2.1", 
-      "text": "How should the burden of productivity-based taxation be structured across society?", 
+      "id": "r_production", 
+      "text": "How should the burden of productivity and income taxation be structured across society?", 
       "options": [ 
-        { "text": "A flat, uniform percentage applied equally across all participants to preserve market neutrality.", "next": "flat_taxation" }, 
-        { "text": "A graduated progressive scale where contribution rates increase as income or wealth capacity rises.", "next": "Progressive_Taxation" }, 
-        { "text": "Confiscatory maximum rates (approaching 100%) on extreme incomes, private fortunes, or inheritances to prevent economic dynasties.", "next": "Confiscatory_Taxation" } 
+        { 
+          "text": "A flat, uniform percentage applied equally across all participants to preserve market neutrality.", 
+          "next": "flat_taxation" 
+        }, 
+        { 
+          "text": "A graduated progressive scale where contribution rates increase as income or wealth capacity rises.", 
+          "next": "Progressive_Taxation" 
+        }, 
+        { 
+          "text": "Confiscatory maximum rates (approaching 100%) on extreme incomes, private fortunes, or inheritances to prevent economic dynasties.", 
+          "next": "Confiscatory_Taxation" 
+        } 
+      ] 
+    },
+    { 
+      "id": "r_land", 
+      "text": "How absolute should the reliance on Land Value Taxation (LVT) be?", 
+      "options": [ 
+        { 
+          "text": "Unimproved land value is the sole source of public revenue, abolishing all taxes on income, labor, commerce, and buildings.", 
+          "next": "lvt" 
+        }, 
+        { 
+          "text": "Land Value Tax is the foundational revenue base to stop speculation, supplemented by standard taxes to fund public services and welfare.", 
+          "next": "mixed_lvt" 
+        } 
+      ] 
+    },
+    { 
+      "id": "r_non_income", 
+      "text": "What non-income mechanism should fund the state without taxing labor and investment?", 
+      "options": [ 
+        { 
+          "text": "A single, uniform national consumption tax on all final goods, eliminating income, corporate, and payroll taxes.", 
+          "next": "fair_tax" 
+        }, 
+        { 
+          "text": "Protective import tariffs, customs duties, and foreign trade levies, eliminating direct domestic taxation on citizens.", 
+          "next": "tariff_funding" 
+        } 
       ] 
     },
     { "id": "Voluntaryism" },
     { "id": "lvt" },
+    { "id": "mixed_lvt" },
+    { "id": "tariff_funding" },
+    { "id": "fair_tax" },
     { "id": "flat_taxation" },
     { "id": "Progressive_Taxation" },
     { "id": "Confiscatory_Taxation" },
@@ -395,7 +465,7 @@
       "id": "a_gov_model", 
       "text": "Where should sovereign decision-making power ultimately reside?", 
       "options": [ 
-        { "text": "In the citizenry, constitutional frameworks, and parliamentary bodies.", "next": "a_popular" },
+        { "text": "In the citizenry bodies.", "next": "a_popular" },
         { "text": "In a distinguished elite or capable leadership class selected by merit, expertise, or duty.", "next": "a_elite" },
         { "text": "In a concentrated supreme leader, executive authority, or governing corporate body.", "next": "a_concentrated" }
       ] 
@@ -736,11 +806,11 @@
       "text": "Should ecological protection rely on restraining industrial expansion or deploying advanced technology?",
       "options": [
         {
-          "text": "Restrain and reform: protect wild nature, set ecological limits, and transition to sustainable practices.",
+          "text": "Protect wild nature, set ecological limits, and transition to sustainable practices.",
           "next": "t_green_restrain"
         },
         {
-          "text": "High-tech restoration: use advanced science, nuclear energy, bioengineering, and space industry to heal the planet.",
+          "text": "Use advanced science, nuclear energy, bioengineering, and space industry to heal the planet.",
           "next": "t_green_tech"
         }
       ]
