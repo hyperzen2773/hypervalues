@@ -12,6 +12,7 @@
     <div class="main-container">
         <img id="ideology-icon" src="" alt="" class="desc-icon">
         <h1 id="ideology-title">Loading...</h1>
+        <div id="ideology-viewer" class="iv-viewer" style="display: none;"></div>
 
         <div class="description-box">
             <p id="ideology-description"></p>
@@ -25,6 +26,7 @@
     </div>
 
     <script src="data.js"></script>
+    <script src="scoring.js"></script>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const itemId = urlParams.get('id');
@@ -49,6 +51,7 @@
             sourceBtn.style.display = 'none';
             originalSign.style.display = 'none';
             descEl.innerText = descriptions[itemId] || "Description coming soon!";
+            buildViewer(itemId);
         } else {
             const prettyName = (resultsMapping[category] && resultsMapping[category][itemId])
                                 ? resultsMapping[category][itemId]
@@ -66,6 +69,141 @@
                 sourceBtn.style.display = 'none';
                 originalSign.style.display = 'block';
             }
+        }
+
+
+        // ---------------------------------------------------------------------------
+        // Ideology page: its value sets (browse with the arrows), ringed by how they compare with yours
+        // ---------------------------------------------------------------------------
+        function buildViewer(label) {
+            const viewer = document.getElementById('ideology-viewer');
+            let userResults = {};
+            try { userResults = JSON.parse(localStorage.getItem('quizResults') || '{}') || {}; } catch (e) { userResults = {}; }
+            const hasResults = categories.some(cat => userResults[cat]);
+
+            let keys = HV.keysOf(label);
+            if (!keys.length) return;
+            if (hasResults) keys = HV.rankKeys(userResults, keys).map(item => item.key);
+
+            const nameOf = (cat, value) => (resultsMapping[cat] && resultsMapping[cat][value])
+                ? resultsMapping[cat][value]
+                : value.replace(/_/g, ' ');
+
+            const stage = document.createElement('div');
+            stage.className = 'iv-stage';
+            const prev = document.createElement('button');
+            prev.type = 'button';
+            prev.className = 'iv-arrow';
+            prev.setAttribute('aria-label', 'Previous value set');
+            const grid = document.createElement('div');
+            grid.className = 'iv-grid';
+            const next = document.createElement('button');
+            next.type = 'button';
+            next.className = 'iv-arrow iv-arrow-next';
+            next.setAttribute('aria-label', 'Next value set');
+            stage.appendChild(prev);
+            stage.appendChild(grid);
+            stage.appendChild(next);
+
+            const dots = document.createElement('div');
+            dots.className = 'iv-dots';
+            const caption = document.createElement('p');
+            caption.className = 'iv-caption';
+
+            viewer.appendChild(stage);
+            viewer.appendChild(dots);
+            viewer.appendChild(caption);
+            viewer.style.display = 'flex';
+
+            let index = 0;
+
+            function ringText(rel, userName) {
+                if (rel.type === 'identical') return 'Same as your choice';
+                if (rel.type === 'similar') return `Close to your ${userName}`;
+                if (rel.type === 'clash') {
+                    const level = rel.severity <= 0.5 ? 'mildly' : (rel.severity <= 1.5 ? 'strongly' : 'extremely');
+                    return `Clashes ${level} with your ${userName}`;
+                }
+                return `Not close to and not clashing with your ${userName}`;
+            }
+
+            function render() {
+                const values = HV.valuesByCategory(keys[index]);
+                grid.innerHTML = '';
+                categories.forEach(cat => {
+                    const value = values[cat];
+                    const slot = document.createElement(value ? 'a' : 'div');
+                    slot.className = 'iv-slot';
+                    const icon = document.createElement('span');
+                    icon.className = 'iv-icon';
+                    const name = document.createElement('span');
+                    name.className = 'iv-name';
+
+                    if (value) {
+                        slot.href = `description.html?id=${value}&cat=${cat}`;
+                        const img = document.createElement('img');
+                        img.src = `icons/${cat}/${value}.svg`;
+                        img.alt = '';
+                        img.onerror = () => { img.style.display = 'none'; };
+                        icon.appendChild(img);
+                        name.textContent = nameOf(cat, value);
+                        if (hasResults && userResults[cat]) {
+                            const rel = HV.relation(cat, userResults[cat], value);
+                            icon.classList.add(HV.ringClass(rel));
+                            slot.title = `${name.textContent}: ${ringText(rel, nameOf(cat, userResults[cat]))}`;
+                        }
+                    } else {
+                        icon.classList.add('iv-blank');
+                        name.classList.add('iv-cat');
+                        name.textContent = categoryTitles[cat] || cat;
+                    }
+                    slot.appendChild(icon);
+                    slot.appendChild(name);
+                    grid.appendChild(slot);
+                });
+
+                dots.innerHTML = '';
+                keys.forEach((k, i) => {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'iv-dot' + (i === index ? ' active' : '');
+                    dot.setAttribute('aria-label', `Value set ${i + 1}`);
+                    dot.addEventListener('click', () => go(i));
+                    dots.appendChild(dot);
+                });
+                caption.textContent = keys.length > 1
+                    ? `Value set ${index + 1} of ${keys.length}` + (hasResults && index === 0 ? ' \u00b7 closest to yours' : '')
+                    : '';
+            }
+
+            function go(target) {
+                index = (target + keys.length) % keys.length;
+                render();
+            }
+
+            prev.addEventListener('click', () => go(index - 1));
+            next.addEventListener('click', () => go(index + 1));
+            if (keys.length < 2) {
+                prev.style.visibility = 'hidden';
+                next.style.visibility = 'hidden';
+                dots.style.display = 'none';
+            }
+
+            document.addEventListener('keydown', e => {
+                if (keys.length < 2) return;
+                if (e.key === 'ArrowLeft') go(index - 1);
+                if (e.key === 'ArrowRight') go(index + 1);
+            });
+            let touchStartX = null;
+            stage.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+            stage.addEventListener('touchend', e => {
+                if (touchStartX === null || keys.length < 2) return;
+                const dx = e.changedTouches[0].clientX - touchStartX;
+                touchStartX = null;
+                if (Math.abs(dx) > 50) go(dx < 0 ? index + 1 : index - 1);
+            }, { passive: true });
+
+            render();
         }
 
         function openIconSource() {
