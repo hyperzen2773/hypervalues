@@ -24,8 +24,8 @@
             
             <div id="closest-section" style="display: none;">
                 <p class="closest-heading">Next closest matches</p>
+                <p class="closest-hint">Tap one to compare its values with yours</p>
                 <div id="closest-list"></div>
-                <div id="closest-detail"></div>
             </div>
 
             <p class="intro-text results-instruction">
@@ -219,118 +219,239 @@
 
         const closestSection = document.getElementById('closest-section');
         const closestList = document.getElementById('closest-list');
-        const closestDetail = document.getElementById('closest-detail');
-        let openIndex = -1;
+        const STATUS_MARK = { identical: '\u2713', similar: '\u2248', clash: '\u2715' };
+        const STATUS_TEXT = {
+            identical: 'Same value as yours',
+            similar: 'Same sub-group as yours',
+            clash: 'Clashes with yours'
+        };
 
-        function renderDetail(match) {
-            const color = labelColors[match.label] || '#7a7a7a';
-            const box = document.createElement('div');
-            box.className = 'ideology-detail';
-            box.style.borderColor = color;
+        function colorParts(color) {
+            const hex = /^#([0-9a-fA-F]{6})/.exec(color || '');
+            if (!hex) return null;
+            return [0, 2, 4].map(i => parseInt(hex[1].substr(i, 2), 16) / 255);
+        }
 
-            const title = document.createElement('a');
-            title.className = 'ideology-title';
-            title.href = `description.html?id=${encodeURIComponent(match.label)}&type=ideology`;
-            title.textContent = match.label;
-            box.appendChild(title);
+        function isLightColor(color) {
+            const rgb = colorParts(color);
+            if (!rgb) return false;
+            const lin = rgb.map(c => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+            return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2] > 0.5;
+        }
 
-            const valueByCategory = {};
-            match.key.split('|').forEach(part => {
+        function valuesByCategory(key) {
+            const byCategory = {};
+            key.split('|').forEach(part => {
                 const cat = categoryOf[part];
-                if (cat) valueByCategory[cat] = part;
+                if (cat) byCategory[cat] = part;
             });
+            return byCategory;
+        }
+
+        function displayName(cat, value) {
+            return (resultsMapping[cat] && resultsMapping[cat][value])
+                ? resultsMapping[cat][value]
+                : value.replace(/_/g, ' ');
+        }
+
+        function statusOf(cat, value) {
+            return results[cat] ? relation(cat, results[cat], value).type : 'other';
+        }
+
+        function makeIcon(cat, value) {
+            const img = document.createElement('img');
+            img.src = `icons/${cat}/${value}.svg`;
+            img.alt = '';
+            img.onerror = () => { img.style.display = 'none'; };
+            return img;
+        }
+
+        // Values used by the other value sets of the same ideology, per category
+        function alternativesFor(match) {
+            const mainByCategory = valuesByCategory(match.key);
+            const alternatives = {};
+            Object.keys(labelMapping)
+                .filter(key => labelMapping[key] === match.label && key !== match.key)
+                .forEach(key => {
+                    const other = valuesByCategory(key);
+                    categories.forEach(cat => {
+                        const entry = alternatives[cat] = alternatives[cat] || { values: [], any: false };
+                        if (other[cat]) {
+                            if (other[cat] !== mainByCategory[cat] && !entry.values.includes(other[cat])) {
+                                entry.values.push(other[cat]);
+                            }
+                        } else if (mainByCategory[cat]) {
+                            entry.any = true;
+                        }
+                    });
+                });
+            return alternatives;
+        }
+
+        function buildSlot(cat, mainValue, alternative) {
+            const slot = document.createElement('div');
+            slot.className = 'cd-slot';
+
+            if (mainValue) {
+                const status = statusOf(cat, mainValue);
+                const link = document.createElement('a');
+                link.className = 'cd-value';
+                link.href = `description.html?id=${mainValue}&cat=${cat}`;
+
+                const icon = document.createElement('span');
+                icon.className = 'cd-icon';
+                icon.appendChild(makeIcon(cat, mainValue));
+                if (STATUS_MARK[status]) {
+                    const badge = document.createElement('span');
+                    badge.className = 'cd-badge ' + status;
+                    badge.textContent = STATUS_MARK[status];
+                    badge.title = STATUS_TEXT[status];
+                    icon.appendChild(badge);
+                }
+
+                const name = document.createElement('span');
+                name.className = 'cd-name';
+                name.textContent = displayName(cat, mainValue);
+
+                link.appendChild(icon);
+                link.appendChild(name);
+                slot.appendChild(link);
+            } else {
+                const empty = document.createElement('div');
+                empty.className = 'cd-empty';
+                const icon = document.createElement('span');
+                icon.className = 'cd-icon cd-icon-empty';
+                const name = document.createElement('span');
+                name.className = 'cd-name';
+                name.textContent = categoryTitles[cat] || cat;
+                empty.appendChild(icon);
+                empty.appendChild(name);
+                slot.appendChild(empty);
+            }
+
+            if (alternative && (alternative.values.length || alternative.any)) {
+                const box = document.createElement('div');
+                box.className = 'cd-alts';
+                const label = document.createElement('span');
+                label.className = 'cd-alts-label';
+                label.textContent = 'Other options';
+                box.appendChild(label);
+                alternative.values.forEach(value => {
+                    const chip = document.createElement('a');
+                    chip.className = 'cd-chip ' + statusOf(cat, value);
+                    chip.href = `description.html?id=${value}&cat=${cat}`;
+                    chip.appendChild(makeIcon(cat, value));
+                    const text = document.createElement('span');
+                    text.textContent = displayName(cat, value);
+                    chip.appendChild(text);
+                    box.appendChild(chip);
+                });
+                if (alternative.any) {
+                    const chip = document.createElement('span');
+                    chip.className = 'cd-chip any';
+                    chip.textContent = 'Any value';
+                    box.appendChild(chip);
+                }
+                slot.appendChild(box);
+            }
+            return slot;
+        }
+
+        function renderDetail(match, container) {
+            const mainByCategory = valuesByCategory(match.key);
+            const alternatives = alternativesFor(match);
 
             const grid = document.createElement('div');
-            grid.className = 'ideology-values';
+            grid.className = 'cd-grid';
             categories.forEach(cat => {
-                const slot = document.createElement('div');
-                slot.className = 'ivalue-slot';
-
-                const caption = document.createElement('span');
-                caption.className = 'ivalue-cat';
-                caption.textContent = categoryTitles[cat] || cat;
-                slot.appendChild(caption);
-
-                const reqVal = valueByCategory[cat];
-                if (reqVal) {
-                    const status = results[cat] ? relation(cat, results[cat], reqVal).type : 'other';
-                    const link = document.createElement('a');
-                    link.className = 'result-item ivalue ' + status;
-                    link.href = `description.html?id=${reqVal}&cat=${cat}`;
-
-                    const img = document.createElement('img');
-                    img.src = `icons/${cat}/${reqVal}.svg`;
-                    img.className = 'result-icon';
-                    img.onerror = () => { img.style.display = 'none'; };
-
-                    const name = document.createElement('p');
-                    name.className = 'result-text';
-                    name.textContent = (resultsMapping[cat] && resultsMapping[cat][reqVal])
-                        ? resultsMapping[cat][reqVal]
-                        : reqVal.replace(/_/g, ' ');
-
-                    link.appendChild(img);
-                    link.appendChild(name);
-                    slot.appendChild(link);
-                } else {
-                    const empty = document.createElement('div');
-                    empty.className = 'ivalue-empty';
-                    slot.appendChild(empty);
-                }
-                grid.appendChild(slot);
+                grid.appendChild(buildSlot(cat, mainByCategory[cat], alternatives[cat]));
             });
-            box.appendChild(grid);
+            container.appendChild(grid);
 
             const legend = document.createElement('p');
-            legend.className = 'ideology-legend';
-            legend.innerHTML = '<span><i class="dot identical"></i>Same value</span>' +
-                '<span><i class="dot similar"></i>Same sub-group</span>' +
-                '<span><i class="dot clash"></i>Clashes with yours</span>';
-            box.appendChild(legend);
+            legend.className = 'cd-legend';
+            ['identical', 'similar', 'clash'].forEach(status => {
+                const item = document.createElement('span');
+                const badge = document.createElement('span');
+                badge.className = 'cd-badge ' + status;
+                badge.textContent = STATUS_MARK[status];
+                item.appendChild(badge);
+                item.appendChild(document.createTextNode(STATUS_TEXT[status]));
+                legend.appendChild(item);
+            });
+            container.appendChild(legend);
 
             const sets = valueSetsPerIdeology[match.label];
             if (sets > 1) {
                 const note = document.createElement('p');
-                note.className = 'ideology-note';
-                note.textContent = `This ideology has ${sets} value sets. The one closest to yours is shown.`;
-                box.appendChild(note);
+                note.className = 'cd-note';
+                note.textContent = `${sets} value sets: the one closest to yours is shown, the others differ where "Other options" appear.`;
+                container.appendChild(note);
             }
-
-            closestDetail.innerHTML = '';
-            closestDetail.appendChild(box);
+            const more = document.createElement('p');
+            more.className = 'cd-note';
+            const link = document.createElement('a');
+            link.href = `description.html?id=${encodeURIComponent(match.label)}&type=ideology`;
+            link.textContent = 'Read about ' + match.label;
+            more.appendChild(link);
+            container.appendChild(more);
         }
 
-        function toggleDetail(index) {
-            const pills = closestList.querySelectorAll('.closest-pill');
-            pills.forEach((pill, i) => {
-                const color = labelColors[closestMatches[i].label] || '#7a7a7a';
-                const active = i === index && openIndex !== index;
-                pill.setAttribute('aria-expanded', active ? 'true' : 'false');
-                pill.style.backgroundColor = active ? color : 'transparent';
-                pill.style.color = active ? '#ffffff' : color;
+        const entries = [];
+        function toggleEntry(index) {
+            entries.forEach((item, i) => {
+                const open = i === index && item.pill.getAttribute('aria-expanded') !== 'true';
+                item.pill.setAttribute('aria-expanded', open ? 'true' : 'false');
+                item.detail.hidden = !open;
+                if (open && !item.detail.dataset.ready) {
+                    renderDetail(item.match, item.detail);
+                    item.detail.dataset.ready = '1';
+                }
+                if (open && item.detail.scrollIntoView) item.detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             });
-            if (openIndex === index) {
-                openIndex = -1;
-                closestDetail.innerHTML = '';
-            } else {
-                openIndex = index;
-                renderDetail(closestMatches[index]);
-            }
         }
 
         if (closestMatches.length > 0) {
             closestSection.style.display = 'flex';
             closestMatches.forEach((match, index) => {
                 const color = labelColors[match.label] || '#7a7a7a';
+                const light = isLightColor(color);
+
+                const entry = document.createElement('div');
+                entry.className = 'closest-entry';
+
                 const pill = document.createElement('button');
                 pill.type = 'button';
                 pill.className = 'closest-pill';
-                pill.style.borderColor = color;
-                pill.style.color = color;
+                pill.style.setProperty('--pill-bg', color.slice(0, 7));
+                pill.style.setProperty('--pill-fg', light ? '#18181b' : '#ffffff');
+                pill.style.setProperty('--pill-chip', light ? 'rgba(0, 0, 0, 0.14)' : 'rgba(255, 255, 255, 0.22)');
                 pill.setAttribute('aria-expanded', 'false');
-                pill.textContent = `${index + 1}. ${match.label} (${match.identicalCount}/${match.totalRequired})`;
-                pill.addEventListener('click', () => toggleDetail(index));
-                closestList.appendChild(pill);
+
+                const rank = document.createElement('span');
+                rank.className = 'cp-rank';
+                rank.textContent = index + 1;
+                const name = document.createElement('span');
+                name.className = 'cp-name';
+                name.textContent = match.label;
+                const count = document.createElement('span');
+                count.className = 'cp-count';
+                count.textContent = `${match.identicalCount}/${match.totalRequired}`;
+                count.title = `${match.identicalCount} of ${match.totalRequired} required values match yours`;
+                const chevron = document.createElement('span');
+                chevron.className = 'cp-chevron';
+                chevron.setAttribute('aria-hidden', 'true');
+                                [rank, name, count, chevron].forEach(el => pill.appendChild(el));
+
+                const detail = document.createElement('div');
+                detail.className = 'closest-detail';
+                detail.hidden = true;
+
+                pill.addEventListener('click', () => toggleEntry(index));
+                entry.appendChild(pill);
+                entry.appendChild(detail);
+                closestList.appendChild(entry);
+                entries.push({ match, pill, detail });
             });
         }
     </script>
