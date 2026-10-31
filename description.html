@@ -79,7 +79,8 @@
             const viewer = document.getElementById('ideology-viewer');
             let userResults = {};
             try { userResults = JSON.parse(localStorage.getItem('quizResults') || '{}') || {}; } catch (e) { userResults = {}; }
-            const hasResults = categories.some(cat => userResults[cat]);
+            // rings and ordering only when opened from the results page (the link carries compare=1)
+            const hasResults = urlParams.get('compare') === '1' && categories.some(cat => userResults[cat]);
 
             let keys = HV.keysOf(label);
             if (!keys.length) return;
@@ -137,7 +138,7 @@
                     const icon = document.createElement('span');
                     icon.className = 'iv-icon';
                     const name = document.createElement('span');
-                    name.className = 'iv-name';
+                    name.className = 'iv-name result-text';
 
                     if (value) {
                         slot.href = `description.html?id=${value}&cat=${cat}`;

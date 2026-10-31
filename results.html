@@ -86,7 +86,7 @@
         labelDiv.style.backgroundColor = labelColors[finalLabel] || "#7a7a7a";
 
         if (matchedKey) {
-            labelDiv.innerHTML = `<a href="description.html?id=${encodeURIComponent(finalLabel)}&type=ideology" style="color: inherit; text-decoration: none; display: block;">${finalLabel}</a>`;
+            labelDiv.innerHTML = `<a href="description.html?id=${encodeURIComponent(finalLabel)}&type=ideology&compare=1" style="color: inherit; text-decoration: none; display: block;">${finalLabel}</a>`;
         } else {
             labelDiv.innerText = finalLabel;
         }
@@ -120,7 +120,7 @@
 
                 const pill = document.createElement('a');
                 pill.className = 'closest-pill';
-                pill.href = `description.html?id=${encodeURIComponent(match.label)}&type=ideology`;
+                pill.href = `description.html?id=${encodeURIComponent(match.label)}&type=ideology&compare=1`;
                 pill.style.setProperty('--pill-bg', color.slice(0, 7));
                 pill.style.setProperty('--pill-fg', light ? '#18181b' : '#ffffff');
                 pill.style.setProperty('--pill-chip', light ? 'rgba(0, 0, 0, 0.14)' : 'rgba(255, 255, 255, 0.22)');
