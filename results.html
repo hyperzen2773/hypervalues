@@ -14,7 +14,7 @@
         <div class="top-section">
             <div class="title-container">
                 <h1>HyperValues</h1>
-                <span class="version-text">v3.6</span>
+                <span class="version-text">v3.7</span>
             </div>
             <div id="results-container"></div>
         </div>
@@ -22,7 +22,11 @@
         <div class="bottom-section">
             <div id="label"></div>
             
-            <div id="secondary-label"></div>
+            <div id="closest-section" style="display: none;">
+                <p class="closest-heading">Next closest matches</p>
+                <div id="closest-list"></div>
+                <div id="closest-detail"></div>
+            </div>
 
             <p class="intro-text results-instruction">
                 Click on any icon or label to view its description and original source.
@@ -86,53 +90,120 @@
             labelDiv.innerText = finalLabel;
         }
 
-        const secondaryLabelDiv = document.getElementById('secondary-label');
+        // ---------------------------------------------------------------------------
+        // Closest matches
+        // score = (identical + 0.5 x same sub-group - clash penalties) x (identical / required values)
+        //         / (number of value sets of the ideology) ^ 0.25
+        // Every value is weighted by how rare it is across all ideologies. Clash penalties depend on the
+        // pair of sub-groups (see incompatibleSubCategories in data.js).
+        // ---------------------------------------------------------------------------
+        const CLOSEST_COUNT = 3;
+        const VARIANT_EXPONENT = 0.25;
+        const WEIGHT_MIN = 0.5;
+        const WEIGHT_MAX = 2;
+
+        const categoryOf = {};
+        Object.keys(resultsMapping).forEach(cat => {
+            Object.keys(resultsMapping[cat]).forEach(id => {
+                if (!(id in categoryOf)) categoryOf[id] = cat;
+            });
+        });
+
+        function groupsOf(category, value) {
+            const groups = subCategories[category] || {};
+            return Object.keys(groups).filter(name => groups[name].includes(value));
+        }
+
+        // How a required value relates to the user's value in the same category:
+        // identical, similar (shares a sub-group), clash (every pair of sub-groups clashes) or other.
+        function relation(category, userVal, reqVal) {
+            if (userVal === reqVal) return { type: 'identical', severity: 0 };
+            const userGroups = groupsOf(category, userVal);
+            const reqGroups = groupsOf(category, reqVal);
+            if (userGroups.some(g => reqGroups.includes(g))) return { type: 'similar', severity: 0 };
+            if (userGroups.length && reqGroups.length) {
+                let mildest = Infinity;
+                for (const a of userGroups) {
+                    for (const b of reqGroups) {
+                        const severity = (incompatibleSubCategories[a] || {})[b];
+                        if (severity === undefined) return { type: 'other', severity: 0 };
+                        if (severity < mildest) mildest = severity;
+                    }
+                }
+                return { type: 'clash', severity: mildest };
+            }
+            return { type: 'other', severity: 0 };
+        }
+
+        // Rarity weights and value sets per ideology
+        const ideologiesUsingValue = {};
+        const valueSetsPerIdeology = {};
+        const allKeyParts = [];
+        Object.keys(labelMapping).forEach(key => {
+            const label = labelMapping[key];
+            valueSetsPerIdeology[label] = (valueSetsPerIdeology[label] || 0) + 1;
+            key.split('|').forEach(part => {
+                (ideologiesUsingValue[part] = ideologiesUsingValue[part] || new Set()).add(label);
+                allKeyParts.push(part);
+            });
+        });
+        const totalIdeologies = Object.keys(valueSetsPerIdeology).length;
+        const rawWeight = {};
+        Object.keys(ideologiesUsingValue).forEach(value => {
+            rawWeight[value] = Math.log(1 + totalIdeologies / ideologiesUsingValue[value].size);
+        });
+        const meanWeight = allKeyParts.reduce((sum, part) => sum + rawWeight[part], 0) / allKeyParts.length;
+        function valueWeight(value) {
+            const weight = (rawWeight[value] || meanWeight) / meanWeight;
+            return Math.min(WEIGHT_MAX, Math.max(WEIGHT_MIN, weight));
+        }
+
         const scoredLabels = Object.keys(labelMapping)
             .map(key => {
                 const requiredParts = key.split('|');
-                let score = 0;
-                let penalty = 0;
+                const label = labelMapping[key];
+                let credit = 0;
+                let identicalWeight = 0;
+                let totalWeight = 0;
                 let identicalCount = 0;
                 let broaderCount = 0;
+                let clashCount = 0;
 
                 requiredParts.forEach(reqVal => {
-                    const category = Object.keys(resultsMapping).find(cat => resultsMapping[cat][reqVal]);
+                    const weight = valueWeight(reqVal);
+                    totalWeight += weight;
+                    const category = categoryOf[reqVal];
                     if (!category) return;
                     const userVal = results[category];
                     if (!userVal) return;
-                    const userGroup = Object.keys(subCategories[category] || {}).find(group => 
-                         subCategories[category][group].includes(userVal)
-                    );
-                    const reqGroup = Object.keys(subCategories[category] || {}).find(group => 
-                         subCategories[category][group].includes(reqVal)
-                    );
-                    if (userVal === reqVal) {
-                        score += 1.0;
+                    const rel = relation(category, userVal, reqVal);
+                    if (rel.type === 'identical') {
+                        credit += weight;
+                        identicalWeight += weight;
                         identicalCount++;
-                    } else if (userGroup && userGroup === reqGroup) {
-                        score += 0.5;
+                    } else if (rel.type === 'similar') {
+                        credit += weight * 0.5;
                         broaderCount++;
-                    }
-                    if (userGroup && reqGroup) {
-                        const userIncompat = incompatibleSubCategories[userGroup] || [];
-                        const reqIncompat = incompatibleSubCategories[reqGroup] || [];
-                        if (userIncompat.includes(reqGroup) || reqIncompat.includes(userGroup)) {
-                            penalty = -100;
-                        }
+                    } else if (rel.type === 'clash') {
+                        credit -= weight * rel.severity;
+                        clashCount++;
                     }
                 });
-                // HyperValues scoring: raw score x (identical values / values the ideology requires)
-                const adjustedScore = (score + penalty) * (identicalCount / requiredParts.length);
-                return { 
-                    key, 
-                    label: labelMapping[key], 
-                    score: adjustedScore,
+
+                let score = identicalCount > 0 ? (credit * identicalWeight) / totalWeight : 0;
+                score = score / Math.pow(valueSetsPerIdeology[label], VARIANT_EXPONENT);
+                return {
+                    key,
+                    label,
+                    score,
                     identicalCount,
                     broaderCount,
+                    clashCount,
                     totalRequired: requiredParts.length
                 };
             })
-            .sort((a, b) => b.score - a.score)
+            // higher score first; on equal scores the ideology with more identical values wins
+            .sort((a, b) => (b.score - a.score) || (b.identicalCount - a.identicalCount))
             .filter(item => item.label !== finalLabel);
 
         const uniqueScoredLabels = [];
@@ -144,16 +215,123 @@
             }
         }
 
-        if (uniqueScoredLabels.length > 0 && uniqueScoredLabels[0].score > 0) {
-            const nextMatch = uniqueScoredLabels[0];
-            secondaryLabelDiv.className = "label-bubble";
-            secondaryLabelDiv.style.display = "inline-block";
-            secondaryLabelDiv.style.borderColor = labelColors[nextMatch.label] || "#7a7a7a";
-            secondaryLabelDiv.style.color = labelColors[nextMatch.label] || "#7a7a7a";
+        const closestMatches = uniqueScoredLabels.filter(item => item.score > 0).slice(0, CLOSEST_COUNT);
 
-            secondaryLabelDiv.innerHTML = `<a href="description.html?id=${encodeURIComponent(nextMatch.label)}&type=ideology" style="color: inherit; text-decoration: none; display: block;">Next closest match: ${nextMatch.label} (${nextMatch.identicalCount}/${nextMatch.totalRequired})</a>`;
-        } else {
-            secondaryLabelDiv.style.display = "none";
+        const closestSection = document.getElementById('closest-section');
+        const closestList = document.getElementById('closest-list');
+        const closestDetail = document.getElementById('closest-detail');
+        let openIndex = -1;
+
+        function renderDetail(match) {
+            const color = labelColors[match.label] || '#7a7a7a';
+            const box = document.createElement('div');
+            box.className = 'ideology-detail';
+            box.style.borderColor = color;
+
+            const title = document.createElement('a');
+            title.className = 'ideology-title';
+            title.href = `description.html?id=${encodeURIComponent(match.label)}&type=ideology`;
+            title.textContent = match.label;
+            box.appendChild(title);
+
+            const valueByCategory = {};
+            match.key.split('|').forEach(part => {
+                const cat = categoryOf[part];
+                if (cat) valueByCategory[cat] = part;
+            });
+
+            const grid = document.createElement('div');
+            grid.className = 'ideology-values';
+            categories.forEach(cat => {
+                const slot = document.createElement('div');
+                slot.className = 'ivalue-slot';
+
+                const caption = document.createElement('span');
+                caption.className = 'ivalue-cat';
+                caption.textContent = categoryTitles[cat] || cat;
+                slot.appendChild(caption);
+
+                const reqVal = valueByCategory[cat];
+                if (reqVal) {
+                    const status = results[cat] ? relation(cat, results[cat], reqVal).type : 'other';
+                    const link = document.createElement('a');
+                    link.className = 'result-item ivalue ' + status;
+                    link.href = `description.html?id=${reqVal}&cat=${cat}`;
+
+                    const img = document.createElement('img');
+                    img.src = `icons/${cat}/${reqVal}.svg`;
+                    img.className = 'result-icon';
+                    img.onerror = () => { img.style.display = 'none'; };
+
+                    const name = document.createElement('p');
+                    name.className = 'result-text';
+                    name.textContent = (resultsMapping[cat] && resultsMapping[cat][reqVal])
+                        ? resultsMapping[cat][reqVal]
+                        : reqVal.replace(/_/g, ' ');
+
+                    link.appendChild(img);
+                    link.appendChild(name);
+                    slot.appendChild(link);
+                } else {
+                    const empty = document.createElement('div');
+                    empty.className = 'ivalue-empty';
+                    slot.appendChild(empty);
+                }
+                grid.appendChild(slot);
+            });
+            box.appendChild(grid);
+
+            const legend = document.createElement('p');
+            legend.className = 'ideology-legend';
+            legend.innerHTML = '<span><i class="dot identical"></i>Same value</span>' +
+                '<span><i class="dot similar"></i>Same sub-group</span>' +
+                '<span><i class="dot clash"></i>Clashes with yours</span>';
+            box.appendChild(legend);
+
+            const sets = valueSetsPerIdeology[match.label];
+            if (sets > 1) {
+                const note = document.createElement('p');
+                note.className = 'ideology-note';
+                note.textContent = `This ideology has ${sets} value sets. The one closest to yours is shown.`;
+                box.appendChild(note);
+            }
+
+            closestDetail.innerHTML = '';
+            closestDetail.appendChild(box);
+        }
+
+        function toggleDetail(index) {
+            const pills = closestList.querySelectorAll('.closest-pill');
+            pills.forEach((pill, i) => {
+                const color = labelColors[closestMatches[i].label] || '#7a7a7a';
+                const active = i === index && openIndex !== index;
+                pill.setAttribute('aria-expanded', active ? 'true' : 'false');
+                pill.style.backgroundColor = active ? color : 'transparent';
+                pill.style.color = active ? '#ffffff' : color;
+            });
+            if (openIndex === index) {
+                openIndex = -1;
+                closestDetail.innerHTML = '';
+            } else {
+                openIndex = index;
+                renderDetail(closestMatches[index]);
+            }
+        }
+
+        if (closestMatches.length > 0) {
+            closestSection.style.display = 'flex';
+            closestMatches.forEach((match, index) => {
+                const color = labelColors[match.label] || '#7a7a7a';
+                const pill = document.createElement('button');
+                pill.type = 'button';
+                pill.className = 'closest-pill';
+                pill.style.borderColor = color;
+                pill.style.color = color;
+                pill.setAttribute('aria-expanded', 'false');
+                pill.textContent = `${index + 1}. ${match.label} (${match.identicalCount}/${match.totalRequired})`;
+                pill.addEventListener('click', () => toggleDetail(index));
+                closestList.appendChild(pill);
+            });
         }
     </script>
     </div>

@@ -161,14 +161,15 @@ const resultsMapping = {
     }
 };
 
+// Sub-groups of values inside each category. A value can belong to more than one sub-group.
 const subCategories = {
     "economics": {
-        "welfare": ["social_market", "rhine_capitalism", "paternalistic_capitalism", "social_solidarity_economy", "ordnungspolitik", "residualism", "basic_income_capitalism"],
+        "welfare": ["social_market", "rhine_capitalism", "paternalistic_capitalism", "social_solidarity_economy", "ordnungspolitik", "residualism", "basic_income_capitalism", "third_way", "social_corporatism", "social_distributism"],
         "regulated": ["state_capitalism", "dirigisme", "keynesianism", "third_way", "neo_corporatism", "cameralism"],
         "free_cap": ["laissez_faire", "countereconomics"],
         "socialists": ["state_socialism", "free_socialism", "communization", "utopian_socialism", "syndicalism", "guild_socialism"],
-        "market_left": ["agrarian_socialism", "mutualism", "market_socialism"],
-        "corporatists": ["corporatism", "social_corporatism", "yellow_socialism"],
+        "market_left": ["agrarian_socialism", "mutualism", "market_socialism", "mutual_distributism"],
+        "corporatists": ["corporatism", "social_corporatism", "yellow_socialism", "neo_corporatism"],
         "distributist": ["distributism", "social_distributism", "mutual_distributism", "free_market_distributism", "feudalism"]
     },
     "resource_management": {
@@ -178,13 +179,13 @@ const subCategories = {
     },
     "culture": {
         "progressive": ["progressivism", "social_progressivism", "civil_liberalism", "postmodernism"],
-        "mainstreamcon": ["conservatism", "liberal_conservatism", "progressive_conservatism", "conservative_liberalism"],
-        "oldways": ["reactionaryism", "paleoconservatism", "traditionalist_conservatism"],
+        "mainstreamcon": ["conservatism", "liberal_conservatism", "progressive_conservatism", "conservative_liberalism", "paleoconservatism", "traditionalist_conservatism"],
+        "oldways": ["reactionaryism", "paleoconservatism", "traditionalist_conservatism", "reactionary_modernism", "religious_traditionalism", "perennial_traditionalism"],
         "neoold": ["neoreactionaryism", "reactionary_modernism", "religious_traditionalism", "perennial_traditionalism", "alternative_modernism"]
     },
     "authority": {
         "divine": ["theocracy", "absolute", "religious_authoritarianism"],
-        "auth": ["ethical_statism", "autocracy", "partocracy", "stratocracy", "technocracy", "meritocracy", "aristocracy", "neocameralism"],
+        "auth": ["ethical_statism", "autocracy", "partocracy", "stratocracy", "technocracy", "meritocracy", "aristocracy", "neocameralism", "absolute"],
         "mainstreampower": ["representative_democracy", "referendum_democracy", "councilism", "communalism", "digital_democracy", "minarchism", "constitutional"],
         "anarch": ["anarcho_monarchism", "anarchism"]
     },
@@ -197,13 +198,13 @@ const subCategories = {
     "foreign": {
         "close": ["Isolationism", "Non_Interventionism", "armed_neutrality"],
         "neolib": ["Interventionism", "Globalism", "Internationalism", "alter_globalism"],
-        "expansionist": ["Imperialism", "Realpolitik"]
+        "expansionist": ["Imperialism", "Realpolitik", "Interventionism"]
     },
     "technology": {
         "anti_tech": ["primitivism", "neoluddism", "agrarianism"],
-        "eco_stewardship": ["conservationism", "environmentalism"],
-        "industrial_core": ["instrumentalism", "industrialism", "post_industrialism", "ecomodernism"],
-        "accelerationist": ["prometheanism", "technocapitalism", "extropianism", "techno_fatalism"],
+        "eco_stewardship": ["conservationism", "environmentalism", "ecomodernism", "technogaianism", "agrarianism"],
+        "industrial_core": ["instrumentalism", "industrialism", "post_industrialism", "ecomodernism", "technocapitalism"],
+        "accelerationist": ["prometheanism", "technocapitalism", "extropianism", "techno_fatalism", "transhumanism", "posthumanism"],
         "post_biological": ["transhumanism", "posthumanism", "technogaianism"]
     },
     "social_control": {
@@ -219,29 +220,46 @@ const subCategories = {
     }
 };
 
+// Pairs of sub-groups that clash. The number is how many points a clash subtracts from an ideology's score
+// (0.5 = mild, 1.5 = strong, 3.0 = extreme). Every pair is listed in both directions.
 const incompatibleSubCategories = {
-    "welfare": ["socialists"],
-    "socialists": ["welfare", "free_cap"],
-    "free_cap": ["socialists"],
-    "farleft_tax": ["mainstream_tax", "voluntary_tax"],
-    "mainstream_tax": ["farleft_tax"],
-    "voluntary_tax": ["farleft_tax"],
-    "progressive": ["oldways", "neoold"],
-    "oldways": ["progressive"],
-    "neoold": ["progressive", "mainstreamcon"],
-    "mainstreamcon": ["neoold"],
-    "divine": ["mainstreampower", "anarch"],
-    "mainstreampower": ["divine", "auth"],
-    "auth": ["mainstreampower", "anarch"],
-    "anarch": ["auth", "divine"],
-    "global": ["hitler"],
-    "hitler": ["global"],
-    "close": ["neolib"],
-    "neolib": ["close"],
-    "libertarian_sc": ["regime_sc"],
-    "regime_sc": ["libertarian_sc"],
-    "decentralist": ["centralist"],
-    "centralist": ["decentralist"]
+    "welfare": { "free_cap": 1.5, "socialists": 0.5 },
+    "regulated": { "free_cap": 1.5 },
+    "free_cap": { "welfare": 1.5, "regulated": 1.5, "socialists": 3.0, "market_left": 1.5, "corporatists": 1.5 },
+    "socialists": { "welfare": 0.5, "free_cap": 3.0, "corporatists": 0.5, "distributist": 0.5 },
+    "market_left": { "free_cap": 1.5 },
+    "corporatists": { "free_cap": 1.5, "socialists": 0.5 },
+    "distributist": { "socialists": 0.5 },
+    "mainstream_tax": { "farleft_tax": 1.5, "voluntary_tax": 1.5 },
+    "farleft_tax": { "mainstream_tax": 1.5, "voluntary_tax": 3.0 },
+    "voluntary_tax": { "mainstream_tax": 1.5, "farleft_tax": 3.0 },
+    "progressive": { "mainstreamcon": 0.5, "oldways": 3.0, "neoold": 1.5 },
+    "mainstreamcon": { "progressive": 0.5, "oldways": 0.5, "neoold": 1.5 },
+    "oldways": { "progressive": 3.0, "mainstreamcon": 0.5 },
+    "neoold": { "progressive": 1.5, "mainstreamcon": 1.5 },
+    "divine": { "auth": 0.5, "mainstreampower": 1.5, "anarch": 3.0 },
+    "auth": { "divine": 0.5, "mainstreampower": 0.5, "anarch": 1.5 },
+    "mainstreampower": { "divine": 1.5, "auth": 0.5, "anarch": 1.5 },
+    "anarch": { "divine": 3.0, "auth": 1.5, "mainstreampower": 1.5 },
+    "global": { "modnat": 1.5, "hitler": 3.0 },
+    "modnat": { "global": 1.5, "hitler": 0.5 },
+    "hitler": { "global": 3.0, "modnat": 0.5, "individualist": 1.5 },
+    "individualist": { "hitler": 1.5 },
+    "close": { "neolib": 1.5, "expansionist": 1.5 },
+    "neolib": { "close": 1.5, "expansionist": 0.5 },
+    "expansionist": { "close": 1.5, "neolib": 0.5 },
+    "anti_tech": { "industrial_core": 1.5, "accelerationist": 3.0, "post_biological": 3.0 },
+    "eco_stewardship": { "accelerationist": 0.5 },
+    "industrial_core": { "anti_tech": 1.5 },
+    "accelerationist": { "anti_tech": 3.0, "eco_stewardship": 0.5 },
+    "post_biological": { "anti_tech": 3.0 },
+    "libertarian_sc": { "paternal_sc": 0.5, "surveillance_sc": 1.5, "regime_sc": 3.0 },
+    "paternal_sc": { "libertarian_sc": 0.5 },
+    "surveillance_sc": { "libertarian_sc": 1.5 },
+    "regime_sc": { "libertarian_sc": 3.0 },
+    "decentralist": { "centralist": 1.5 },
+    "balanced_territory": { "centralist": 0.5 },
+    "centralist": { "decentralist": 1.5, "balanced_territory": 0.5 }
 };
 
 const ideologyGroups = {
