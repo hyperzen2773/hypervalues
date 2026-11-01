@@ -185,8 +185,8 @@
             prev.addEventListener('click', () => go(index - 1));
             next.addEventListener('click', () => go(index + 1));
             if (keys.length < 2) {
-                prev.style.visibility = 'hidden';
-                next.style.visibility = 'hidden';
+                prev.style.display = 'none';
+                next.style.display = 'none';
                 dots.style.display = 'none';
             }
 

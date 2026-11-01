@@ -565,19 +565,12 @@ a:hover {
 }
 
 .closest-heading {
-    margin: 6px 0 0;
+    margin: 6px 0 4px;
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--text-dim);
-}
-
-.closest-hint {
-    margin: 2px 0 10px;
-    font-size: 0.74rem;
-    color: var(--text-dim);
-    opacity: 0.8;
 }
 
 #closest-list {
@@ -587,75 +580,38 @@ a:hover {
     width: 100%;
 }
 
+/* Same look as the original "Next closest match": an outlined bubble in the ideology's color */
 .closest-pill {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    max-width: 480px;
-    margin: 5px 0;
-    padding: 10px 16px 10px 12px;
-    border: 1px solid rgba(255, 255, 255, 0.22);
+    display: inline-block;
+    max-width: 100%;
+    margin: 6px 0;
+    padding: 14px 40px;
+    border: 2px solid var(--pill-color, #7a7a7a);
     border-radius: 50px;
-    background-color: var(--pill-bg, #7a7a7a);
-    color: var(--pill-fg, #ffffff);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-    font-size: 1.02rem;
+    background-color: transparent;
+    color: var(--pill-color, #7a7a7a);
+    font-size: 1.1rem;
     font-weight: 700;
-    line-height: 1.25;
-    text-align: left;
+    text-align: center;
     text-decoration: none;
     box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
     transition: var(--smooth-transition);
 }
 
 .closest-pill:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-    filter: brightness(1.12);
-}
-
-.cp-rank {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 26px;
-    height: 26px;
-    border-radius: 50%;
-    background-color: var(--pill-chip, rgba(255, 255, 255, 0.22));
-    font-size: 0.8rem;
-}
-
-.cp-name {
-    flex: 1 1 auto;
-    min-width: 0;
-    overflow-wrap: anywhere;
-}
-
-.cp-count {
-    flex: 0 0 auto;
-    padding: 2px 9px;
-    border-radius: 20px;
-    background-color: var(--pill-chip, rgba(255, 255, 255, 0.22));
-    font-size: 0.78rem;
-    white-space: nowrap;
-}
-
-.cp-arrow {
-    flex: 0 0 auto;
-    width: 8px;
-    height: 8px;
-    margin: 0 6px 0 2px;
-    border-right: 2px solid currentColor;
-    border-top: 2px solid currentColor;
-    opacity: 0.85;
-    transform: rotate(45deg);
+    color: var(--pill-color, #7a7a7a);
+    text-decoration: none;
+    filter: brightness(1.2);
 }
 
 @media (max-width: 800px) {
     .closest-pill {
-        font-size: 0.92rem;
-        padding: 9px 12px 9px 10px;
-        gap: 9px;
+        max-width: 90%;
+        padding: 8px 18px;
+        font-size: 0.95rem;
     }
 }
 
@@ -717,10 +673,11 @@ a:hover {
 }
 
 .iv-grid {
-    flex: 1 1 auto;
+    flex: 0 1 auto;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 22px 10px;
+    grid-template-columns: repeat(3, 140px);
+    justify-content: center;
+    gap: 24px 30px;
     min-width: 0;
     padding: 6px 0;
 }
@@ -729,7 +686,9 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 140px;
     min-width: 0;
+    box-sizing: border-box;
     color: inherit;
     text-decoration: none;
 }
@@ -813,17 +772,41 @@ a.iv-slot:hover .iv-icon img {
 }
 
 @media (max-width: 800px) {
+    .iv-viewer {
+        max-width: 420px;
+    }
+
     .iv-stage {
-        gap: 2px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "grid grid" "prev next";
+        column-gap: 12px;
+        row-gap: 6px;
+    }
+
+    .iv-grid {
+        grid-area: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px 10px;
+        justify-items: center;
+        width: 100%;
+    }
+
+    .iv-slot {
+        width: 100%;
+        max-width: 105px;
     }
 
     .iv-arrow {
+        grid-area: prev;
+        justify-self: end;
         width: 34px;
         height: 34px;
     }
 
-    .iv-grid {
-        gap: 20px 4px;
+    .iv-arrow-next {
+        grid-area: next;
+        justify-self: start;
     }
 
     .iv-icon {

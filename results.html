@@ -24,7 +24,6 @@
             
             <div id="closest-section" style="display: none;">
                 <p class="closest-heading">Next closest matches</p>
-                <p class="closest-hint">Tap one to see its values and description</p>
                 <div id="closest-list"></div>
             </div>
 
@@ -99,46 +98,29 @@
         const closestSection = document.getElementById('closest-section');
         const closestList = document.getElementById('closest-list');
 
-        function colorParts(color) {
-            const hex = /^#([0-9a-fA-F]{6})/.exec(color || '');
-            if (!hex) return null;
-            return [0, 2, 4].map(i => parseInt(hex[1].substr(i, 2), 16) / 255);
-        }
-
-        function isLightColor(color) {
-            const rgb = colorParts(color);
-            if (!rgb) return false;
-            const lin = rgb.map(c => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
-            return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2] > 0.5;
-        }
-
         if (closestMatches.length > 0) {
             closestSection.style.display = 'flex';
             closestMatches.forEach((match, index) => {
-                const color = labelColors[match.label] || '#7a7a7a';
-                const light = isLightColor(color);
+                const color = (labelColors[match.label] || '#7a7a7a').slice(0, 7);
 
+                // Same look as the original "Next closest match": an outlined bubble in the ideology's color
                 const pill = document.createElement('a');
                 pill.className = 'closest-pill';
                 pill.href = `description.html?id=${encodeURIComponent(match.label)}&type=ideology&compare=1`;
-                pill.style.setProperty('--pill-bg', color.slice(0, 7));
-                pill.style.setProperty('--pill-fg', light ? '#18181b' : '#ffffff');
-                pill.style.setProperty('--pill-chip', light ? 'rgba(0, 0, 0, 0.14)' : 'rgba(255, 255, 255, 0.22)');
+                pill.style.setProperty('--pill-color', color);
+                pill.title = `${match.identicalCount} of ${match.totalRequired} required values match yours`;
 
                 const rank = document.createElement('span');
                 rank.className = 'cp-rank';
-                rank.textContent = index + 1;
+                rank.textContent = `${index + 1}.`;
                 const name = document.createElement('span');
                 name.className = 'cp-name';
                 name.textContent = match.label;
                 const count = document.createElement('span');
                 count.className = 'cp-count';
-                count.textContent = `${match.identicalCount}/${match.totalRequired}`;
-                count.title = `${match.identicalCount} of ${match.totalRequired} required values match yours`;
-                const arrow = document.createElement('span');
-                arrow.className = 'cp-arrow';
-                arrow.setAttribute('aria-hidden', 'true');
-                [rank, name, count, arrow].forEach(el => pill.appendChild(el));
+                count.textContent = `(${match.identicalCount}/${match.totalRequired})`;
+
+                pill.append(rank, ' ', name, ' ', count);
                 closestList.appendChild(pill);
             });
         }
