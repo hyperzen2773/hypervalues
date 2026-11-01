@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg" href="icon.svg">
     <script src="theme.js"></script>
+    <script src="hyphen.js"></script>
 </head>
 <body>
     <div class="main-container">
@@ -63,7 +64,7 @@
                     ? resultsMapping[category][resultValue]
                     : resultValue.replace(/_/g, ' ');
 
-                name.innerText = displayName;
+                name.textContent = softHyphenate(displayName);
                 name.className = 'result-text';
 
                 wrapper.appendChild(img);
@@ -85,9 +86,9 @@
         labelDiv.style.backgroundColor = labelColors[finalLabel] || "#7a7a7a";
 
         if (matchedKey) {
-            labelDiv.innerHTML = `<a href="description.html?id=${encodeURIComponent(finalLabel)}&type=ideology&compare=1" style="color: inherit; text-decoration: none; display: block;">${finalLabel}</a>`;
+            labelDiv.innerHTML = `<a href="description.html?id=${encodeURIComponent(finalLabel)}&type=ideology&compare=1" style="color: inherit; text-decoration: none; display: block;">${softHyphenate(finalLabel)}</a>`;
         } else {
-            labelDiv.innerText = finalLabel;
+            labelDiv.textContent = softHyphenate(finalLabel);
         }
 
         // ---------------------------------------------------------------------------
@@ -115,7 +116,7 @@
                 rank.textContent = `${index + 1}.`;
                 const name = document.createElement('span');
                 name.className = 'cp-name';
-                name.textContent = match.label;
+                name.textContent = softHyphenate(match.label);
                 const count = document.createElement('span');
                 count.className = 'cp-count';
                 count.textContent = `(${match.identicalCount}/${match.totalRequired})`;

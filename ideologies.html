@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg" href="icon.svg">
     <script src="theme.js"></script>
+    <script src="hyphen.js"></script>
 </head>
 <body>
     <div class="main-container">
@@ -40,7 +41,7 @@
                 const bubble = document.createElement('a');
                 bubble.className = 'label-bubble';
                 bubble.href = `description.html?id=${encodeURIComponent(name)}&type=ideology`;
-                bubble.innerText = name;
+                bubble.textContent = softHyphenate(name);
                 
                 bubble.style.backgroundColor = labelColors[name] || "#7a7a7a";
                 bubble.style.textDecoration = 'none';

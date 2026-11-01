@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg" href="icon.svg">
     <script src="theme.js"></script>
+    <script src="hyphen.js"></script>
 </head>
 <body>
     <div class="main-container">
@@ -49,7 +50,7 @@
                 img.alt = resultsMapping[category][id];
 
                 const name = document.createElement('p');
-                name.innerText = resultsMapping[category][id];
+                name.textContent = softHyphenate(resultsMapping[category][id]);
                 name.className = 'result-text'; 
 
                 wrapper.appendChild(img);

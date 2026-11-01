@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg" href="icon.svg">
     <script src="theme.js"></script>
+    <script src="hyphen.js"></script>
 </head>
 <body>
     <div class="main-container">
@@ -147,11 +148,11 @@
                         img.alt = '';
                         img.onerror = () => { img.style.display = 'none'; };
                         icon.appendChild(img);
-                        name.textContent = nameOf(cat, value);
+                        name.textContent = softHyphenate(nameOf(cat, value));
                         if (hasResults && userResults[cat]) {
                             const rel = HV.relation(cat, userResults[cat], value);
                             icon.classList.add(HV.ringClass(rel));
-                            slot.title = `${name.textContent}: ${ringText(rel, nameOf(cat, userResults[cat]))}`;
+                            slot.title = `${nameOf(cat, value)}: ${ringText(rel, nameOf(cat, userResults[cat]))}`;
                         }
                     } else {
                         icon.classList.add('iv-blank');
