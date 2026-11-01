@@ -15,7 +15,7 @@
         <div class="top-section">
             <div class="title-container">
                 <h1>HyperValues</h1>
-                <span class="version-text">v3.7</span>
+                <span class="version-text">v3.8</span>
             </div>
             <div id="results-container"></div>
         </div>
@@ -64,7 +64,7 @@
                     ? resultsMapping[category][resultValue]
                     : resultValue.replace(/_/g, ' ');
 
-                name.textContent = softHyphenate(displayName);
+                name.textContent = softBreak(displayName);
                 name.className = 'result-text';
 
                 wrapper.appendChild(img);
@@ -86,9 +86,9 @@
         labelDiv.style.backgroundColor = labelColors[finalLabel] || "#7a7a7a";
 
         if (matchedKey) {
-            labelDiv.innerHTML = `<a href="description.html?id=${encodeURIComponent(finalLabel)}&type=ideology&compare=1" style="color: inherit; text-decoration: none; display: block;">${softHyphenate(finalLabel)}</a>`;
+            labelDiv.innerHTML = `<a href="description.html?id=${encodeURIComponent(finalLabel)}&type=ideology&compare=1" style="color: inherit; text-decoration: none; display: block;">${softBreak(finalLabel)}</a>`;
         } else {
-            labelDiv.textContent = softHyphenate(finalLabel);
+            labelDiv.textContent = softBreak(finalLabel);
         }
 
         // ---------------------------------------------------------------------------
@@ -116,7 +116,7 @@
                 rank.textContent = `${index + 1}.`;
                 const name = document.createElement('span');
                 name.className = 'cp-name';
-                name.textContent = softHyphenate(match.label);
+                name.textContent = softBreak(match.label);
                 const count = document.createElement('span');
                 count.className = 'cp-count';
                 count.textContent = `(${match.identicalCount}/${match.totalRequired})`;

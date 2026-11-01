@@ -41,7 +41,7 @@
                 const bubble = document.createElement('a');
                 bubble.className = 'label-bubble';
                 bubble.href = `description.html?id=${encodeURIComponent(name)}&type=ideology`;
-                bubble.textContent = softHyphenate(name);
+                bubble.textContent = softBreak(name);
                 
                 bubble.style.backgroundColor = labelColors[name] || "#7a7a7a";
                 bubble.style.textDecoration = 'none';

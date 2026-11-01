@@ -1,11 +1,12 @@
 /*
- * Soft hyphens for long names.
- * Inserts invisible soft hyphens (U+00AD) inside long words, so a word that has to be
- * broken across lines ends with "-" (e.g. "Environmental-" / "ism") instead of being cut
- * with no hyphen. Short words are left alone and words only break when they do not fit.
+ * Line-break points for long names.
+ * Inserts invisible zero-width spaces (U+200B) at syllable and suffix boundaries inside long
+ * words, so a word that does not fit is broken there (e.g. "ENVIRONMENTAL" / "ISM") and no
+ * "-" is added, like the original. Real hyphens ("Social-Progressivism") stay as they are and
+ * are break points too. Short words are left alone, and words only break when they do not fit.
  */
 (function () {
-    const SHY = '\u00AD';
+    const BREAK = '\u200B';
     const MIN_WORD = 8;   // shorter words are never split
     const MIN_CHUNK = 3;  // at least this many letters on each side of a hyphen
     const SUFFIXES = [
@@ -54,19 +55,19 @@
     }
 
     function hyphenateWord(word) {
-        if (word.length < MIN_WORD || /\u00AD/.test(word)) return word;
+        if (word.length < MIN_WORD || /\u200B/.test(word)) return word;
         const points = breakPoints(word);
         if (!points.length) return word;
         let out = '', last = 0;
         for (const p of points) {
-            out += word.slice(last, p) + SHY;
+            out += word.slice(last, p) + BREAK;
             last = p;
         }
         return out + word.slice(last);
     }
 
-    // Splits on spaces and existing hyphens, so "Anarcho-Communism" keeps its own hyphen
-    window.softHyphenate = function (text) {
+    // Works word by word, so spaces and real hyphens ("Anarcho-Communism") are left untouched
+    window.softBreak = function (text) {
         return String(text).replace(/[A-Za-z]+/g, hyphenateWord);
     };
 })();

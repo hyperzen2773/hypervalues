@@ -148,7 +148,7 @@
                         img.alt = '';
                         img.onerror = () => { img.style.display = 'none'; };
                         icon.appendChild(img);
-                        name.textContent = softHyphenate(nameOf(cat, value));
+                        name.textContent = softBreak(nameOf(cat, value));
                         if (hasResults && userResults[cat]) {
                             const rel = HV.relation(cat, userResults[cat], value);
                             icon.classList.add(HV.ringClass(rel));

@@ -13,13 +13,22 @@
         <h1>Changelog</h1>
 
         <div class="description-box">
+            <h3>3.8 - 02.11.2026</h3>
+            <ul>
+                <li>Changed again how the closest ideologies are chosen. Each value set of an ideology is now scored by how likely someone holding it would be to give your answers: matching a rare value counts for more, and a different answer lowers the score by a similar amount whatever it is. Clashes between sub-groups no longer affect the score, and ideologies with several value sets are neither helped nor hurt by it. Ties go to the ideology with more matching values. In tests that changed a few answers of known value sets, the original ideology was found more often than before.</li>
+                <li>Sub-groups are now only used for the rings around the values on the ideology page.</li>
+                <li>The closest ideologies are shown as outlined bubbles in the ideology's color, like the original "Next closest match", without the rank circles and the arrow. Long names now wrap the same way as in the original, both there and in the value names on the ideology page.</li>
+                <li>On the ideology page, the values use the same column width as on the results page. On small screens the arrows move below the values.</li>
+            </ul>
+        </div>
+
+        <div class="description-box">
             <h3>3.7 - 31.10.2026</h3>
             <ul>
                 <li>The results page now shows your three closest ideologies instead of one. Opening any ideology (from the results or the ideology list) shows its name, its values laid out by category and its description. Use the arrows to browse its other value sets. When opened from your results, each value is ringed by how it compares with yours: green for the same or a close value, yellow to red for clashes (from mild to extreme) and gray for unrelated.</li>
                 <li>Reworked how the closest ideologies are chosen: a clashing value now lowers the score by an amount that depends on how serious the clash is, instead of removing the ideology completely.</li>
                 <li>Rarer values now count for more, ideologies with several value sets no longer get an unfair advantage, and ties go to the ideology you match more closely.</li>
                 <li>Added 23 new pairs of clashing sub-groups, and some values (for example Neocorporatism) now belong to more than one sub-group.</li>
-                <li>The closest ideologies are shown as outlined bubbles in the ideology's color, like the original "Next closest match". Long names now wrap the same way as in the original, both there and in the value names on the ideology page.</li>
             </ul>
         </div>
 

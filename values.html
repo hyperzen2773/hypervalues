@@ -50,7 +50,7 @@
                 img.alt = resultsMapping[category][id];
 
                 const name = document.createElement('p');
-                name.textContent = softHyphenate(resultsMapping[category][id]);
+                name.textContent = softBreak(resultsMapping[category][id]);
                 name.className = 'result-text'; 
 
                 wrapper.appendChild(img);
