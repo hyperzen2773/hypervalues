@@ -1,5 +1,5 @@
 (function () {
-    const savedTheme = localStorage.getItem('nv_theme') || 'dark';
+    const savedTheme = localStorage.getItem('hv_theme') || localStorage.getItem('nv_theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
 })();
 
@@ -7,7 +7,7 @@ function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('nv_theme', newTheme);
+    localStorage.setItem('hv_theme', newTheme);
 }
 
 window.addEventListener('DOMContentLoaded', () => {

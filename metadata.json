@@ -1,0 +1,8 @@
+{
+  "name": "NeoValues",
+  "description": "HyperValues political compass test and ideology matching application.",
+  "prompt": "This app was imported from GitHub repository hyperzen2773/hypervalues.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
